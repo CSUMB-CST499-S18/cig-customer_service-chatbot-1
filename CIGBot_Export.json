@@ -6,11 +6,11 @@
   },
   "resource": {
     "name": "CIGBot",
-    "version": "1",
+    "version": "2",
     "intents": [
       {
         "name": "RetrievePaymentInfo",
-        "version": "12",
+        "version": "13",
         "fulfillmentActivity": {
           "type": "ReturnIntent"
         },
@@ -18,7 +18,9 @@
           "whens my {value} due",
           "how much is my {value}",
           "can I see my {value} amount",
-          "I want to view my {value} date"
+          "I want to view my {value} date",
+          "see {value}",
+          "when {value}"
         ],
         "slots": [
           {
