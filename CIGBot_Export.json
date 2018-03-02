@@ -1,0 +1,143 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "CIGBot",
+    "version": "1",
+    "intents": [
+      {
+        "name": "RetrievePaymentInfo",
+        "version": "12",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "whens my {value} due",
+          "how much is my {value}",
+          "can I see my {value} amount",
+          "I want to view my {value} date"
+        ],
+        "slots": [
+          {
+            "name": "value",
+            "slotConstraint": "Required",
+            "slotType": "InfoType",
+            "slotTypeVersion": "2",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "ok, payment amount or payment date?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[]}"
+            },
+            "priority": 1,
+            "sampleUtterances": []
+          }
+        ]
+      },
+      {
+        "name": "MakePayment",
+        "version": "4",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "I would like to pay my {bill}",
+          "where can I pay my {bill}",
+          "I want to pay my {bill}",
+          "how can I pay my {bill}",
+          "my {bill}"
+        ],
+        "slots": [
+          {
+            "name": "bill",
+            "slotConstraint": "Required",
+            "slotType": "Bill",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What would you like to do?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "sampleUtterances": []
+          }
+        ]
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "Make payment toward bill",
+        "name": "Bill",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "statement",
+            "synonyms": []
+          },
+          {
+            "value": "bill",
+            "synonyms": []
+          },
+          {
+            "value": "invoice",
+            "synonyms": []
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      },
+      {
+        "description": "Payment amount and date",
+        "name": "InfoType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "date",
+            "synonyms": [
+              "deadline",
+              "due,"
+            ]
+          },
+          {
+            "value": "amount",
+            "synonyms": [
+              "how much"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ],
+    "voiceId": "0",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 300,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    }
+  }
+}
