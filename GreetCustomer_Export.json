@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "GreetCustomer",
+    "version": "3",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIGCustomerInquiryProcessor",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "{greeting}"
+    ],
+    "slots": [
+      {
+        "name": "greeting",
+        "slotConstraint": "Required",
+        "slotType": "Greeting",
+        "slotTypeVersion": "1",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Hello! How may I assist you today? (Try 'auto pay' or 'paperless billing'.)"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "Greeting",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "Hello",
+            "synonyms": [
+              "hi",
+              "hey",
+              "hi there"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
