@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "HandleFees",
+    "version": "1",
+    "intents": [
+      {
+        "name": "FeeQuestionHandler",
+        "version": "1",
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:295078129072:function:FeeQuestionProcessor",
+            "messageVersion": "1.0"
+          }
+        },
+        "sampleUtterances": [
+          "Why do I have a {fee}",
+          "What is this {fee}",
+          "Why is there a {fee} on my account",
+          "How much is the {fee}",
+          "Pay the {fee}"
+        ],
+        "slots": [
+          {
+            "name": "fee",
+            "slotConstraint": "Required",
+            "slotType": "FeeType",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Can I answer any questions?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "sampleUtterances": []
+          }
+        ]
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "Possible types of fees",
+        "name": "FeeType",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "NSF",
+            "synonyms": []
+          },
+          {
+            "value": "Installment",
+            "synonyms": []
+          },
+          {
+            "value": "Late",
+            "synonyms": []
+          },
+          {
+            "value": "Reinstatement",
+            "synonyms": []
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ],
+    "voiceId": "0",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 60,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    }
+  }
+}
