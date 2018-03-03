@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "description": "Possible types of fees",
+    "name": "FeeType",
+    "version": "3",
+    "enumerationValues": [
+      {
+        "value": "NSF",
+        "synonyms": [
+          "nsf"
+        ]
+      },
+      {
+        "value": "Installment",
+        "synonyms": [
+          "install"
+        ]
+      },
+      {
+        "value": "Late"
+      },
+      {
+        "value": "Reinstatement"
+      },
+      {
+        "value": "Fee"
+      }
+    ],
+    "valueSelectionStrategy": "TOP_RESOLUTION"
+  }
+}
