@@ -6,7 +6,7 @@
   },
   "resource": {
     "name": "DifferentPaymentBot",
-    "version": "1",
+    "version": "2",
     "intents": [
       {
         "name": "DifferentPayment",
@@ -49,6 +49,18 @@
         ]
       },
       {
+        "name": "GetPolicyInfo",
+        "version": "1",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "What are my policies",
+          "What is this policy"
+        ],
+        "slots": []
+      },
+      {
         "name": "GetCopy",
         "version": "1",
         "fulfillmentActivity": {
@@ -81,6 +93,23 @@
             "sampleUtterances": []
           }
         ]
+      },
+      {
+        "name": "GetNoticeInfo",
+        "version": "2",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "Why did I get a cancellation notice",
+          "I have a cancellation notice",
+          "Why am I getting a cancellation notice",
+          "How do I get a cancellation notice",
+          "Why did you cancel my policy",
+          "Why was my policy cancelled",
+          "Was there a reason that my policy was cancelled"
+        ],
+        "slots": []
       }
     ],
     "slotTypes": [
