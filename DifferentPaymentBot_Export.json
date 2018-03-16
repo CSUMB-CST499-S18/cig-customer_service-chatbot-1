@@ -6,7 +6,7 @@
   },
   "resource": {
     "name": "DifferentPaymentBot",
-    "version": "2",
+    "version": "3",
     "intents": [
       {
         "name": "DifferentPayment",
@@ -50,21 +50,30 @@
       },
       {
         "name": "GetPolicyInfo",
-        "version": "1",
+        "version": "2",
         "fulfillmentActivity": {
-          "type": "ReturnIntent"
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:255437011707:function:policyValues",
+            "messageVersion": "1.0"
+          }
         },
         "sampleUtterances": [
           "What are my policies",
-          "What is this policy"
+          "What is this policy",
+          "What type of policies do I have"
         ],
         "slots": []
       },
       {
         "name": "GetCopy",
-        "version": "1",
+        "version": "5",
         "fulfillmentActivity": {
-          "type": "ReturnIntent"
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:255437011707:function:copyValues",
+            "messageVersion": "1.0"
+          }
         },
         "sampleUtterances": [
           "I want a copy of my {amtType}",
@@ -72,7 +81,8 @@
           "How come I didn't get a {amtType}",
           "Where is my {amtType}",
           "I can't find my {amtType}",
-          "How can I find my {amtType}"
+          "How can I find my {amtType}",
+          "I want my {amtType} copy"
         ],
         "slots": [
           {
@@ -96,9 +106,13 @@
       },
       {
         "name": "GetNoticeInfo",
-        "version": "2",
+        "version": "3",
         "fulfillmentActivity": {
-          "type": "ReturnIntent"
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:255437011707:function:noticeValues",
+            "messageVersion": "1.0"
+          }
         },
         "sampleUtterances": [
           "Why did I get a cancellation notice",
