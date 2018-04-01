@@ -3,9 +3,9 @@
  * in one of two ways: 1) as a lambda initialization and validation (i.e., code hook), or 2) as a fulfillment.
  * Author: Chanel Aquino
  * Date: 3/30/2018
- * 
+ *
  */
- 
+
 'use strict';
 
 const lexResponses = require('./lexResponses');
@@ -15,17 +15,17 @@ console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 
 /**
- * 
+ *
  */
 function buildValidationResult(isValid, violatedSlot, messageContent) {
-    
+
     if(isValid && messageContent == null) {
         return {
             isValid,
             violatedSlot
-        };    
+        };
     }
-    
+
     return {
         isValid,
         violatedSlot,
@@ -37,14 +37,14 @@ function buildValidationResult(isValid, violatedSlot, messageContent) {
  * validates SetupProcess intent
  */
 function validateSetupProcess(processType) {
-    
+
     // user did not specify process type
     if(!processType) {
         var errorMessage = constants.NO_PROCESS_TYPE_PROVIDED;
         return buildValidationResult(false, constants.PROCESS_TYPE_SLOT, errorMessage);
-        
+
     }
-    
+
     // valid process
     return buildValidationResult(true, null, null);
 }
@@ -52,34 +52,48 @@ function validateSetupProcess(processType) {
 
 module.exports = function(intentRequest, callback) {
     var processType = intentRequest.currentIntent.slots.processType;
-    
+
     console.log(`${constants.PROCESS_TYPE_VAL} ${processType}`);
-    
+
     // source of lambda invokation
     const source = intentRequest.invocationSource;
-    
+
     // source of lambda invokation is Dialog Code Hook
     if(source === constants.DIALOG_CODE_HOOK) {
-        
+
+        console.log(`Source of lambda invokation: ${source}`);
+
         const slots = intentRequest.currentIntent.slots;
         const setupProcessValidationResult = validateSetupProcess(processType);
-        
+
         // invalid result: prompt user for slot
         if(!setupProcessValidationResult.isValid) {
             slots[`${setupProcessValidationResult.violatedSlot}`] = null;
             callback(lexResponses.elicitSlot(
-                intentRequest.sessionAttributes, 
-                intentRequest.currentIntent.name, 
-                slots, 
+                intentRequest.sessionAttributes,
+                intentRequest.currentIntent.name,
+                slots,
                 setupProcessValidationResult.violatedSlot,
-                setupProcessValidationResult.messageContent));    
+                setupProcessValidationResult.messageContent));
         }
-        
+
         // valid result: delegate the intent
         callback(lexResponses.delegate(
-            intentRequest.sessionAttributes, 
+            intentRequest.sessionAttributes,
             intentRequest.currentIntent.slots));
+
         return;
     }
-    
+
+    // source of lambda invokation of Fulfillment Code Hook
+    if(source === constants.FULFILL_CODE_HOOK) {
+
+        console.log(`Source of lambda invokation: ${source}`);
+        callback(lexResponses.close(
+            intentRequest.sessionAttributes,
+            'Fulfilled',
+            {'contentType': 'PlainText', 'content': constants.SETUP_BOT_RESPONSE.replace('{0}', processType)}));
+
+        return;
+    }    
 }
