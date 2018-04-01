@@ -8,7 +8,6 @@
 
 'use strict';
 
-const constants = require('./constant-vars');
 const handleDialogCodeHook = require('./manageDialogs');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 
@@ -20,11 +19,11 @@ module.exports = function(intentRequest, callback) {
 
     // source of lambda invokation is Dialog Code Hook
     if(source === constants.DIALOG_CODE_HOOK) {
-        return handleDialogCodeHook(intentRequest, callback);
+        return handleDialogCodeHook(intentRequest);
     }
 
     // source of lambda invokation of Fulfillment Code Hook
     if(source === constants.FULFILL_CODE_HOOK) {
-        return handleFulfillmentCodeHook(intentRequest, false, callback);      
+        return handleFulfillmentCodeHook(intentRequest);
     }
 }

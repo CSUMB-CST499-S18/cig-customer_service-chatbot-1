@@ -28,8 +28,7 @@ module.exports = function(intentRequest, callback) {
 
     // unsupported intent
     else {
-        var error = `${constants.ERROR_INTENT} ${intentName}`;
-        console.log(error);
-        throw new Error(error);
+        console.log(`${constants.ERROR_INTENT} ${intentName}`);
+        return;
     }
 }
