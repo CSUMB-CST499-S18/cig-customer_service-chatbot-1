@@ -9,7 +9,7 @@
 'use strict';
 
 const setupProcess = require('./setupProcess');
-const constants = require('./constant-vars.js');
+const constants = require('./constant-vars');
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
@@ -20,14 +20,16 @@ module.exports = function(intentRequest, callback) {
 
     const intentName = intentRequest.currentIntent.name;
 
+    // SetupProcess intent
     if(intentName === constants.SETUP_PROCESS_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
         return setupProcess(intentRequest, callback);
     }
 
-    // unsupport intent
+    // unsupported intent
     else {
-        console.log(`${constants.ERROR_INTENT} ${intentName}`);
-        return;
+        var error = `${constants.ERROR_INTENT} ${intentName}`;
+        console.log(error);
+        throw new Error(error);
     }
 }

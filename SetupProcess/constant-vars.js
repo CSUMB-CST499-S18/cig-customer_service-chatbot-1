@@ -22,13 +22,24 @@ module.exports = {
     SETUP_PROCESS_INTENT: "SetupProcess",
     PROCESS_TYPE_SLOT: "processType",
     PROCESS_TYPE_VAL: "processType Value:",
-    AUTO_PAY_SLOT: "auto",
-    PAPERLESS_SLOT: "paperless",
+    AUTO_SYNONYM: "auto",
+    AUTO_PAY_SLOT: "auto pay",
+    PAPERLESS_SYNONYM: "paperless",
+    PAPERLESS_SLOT: "paperless billing",
     NO_SETUP_SUPPORT: "Apologies. We currently do not offer support for setting up {0}. Please try again.", // replace {0} with unsupported process
     NO_PROCESS_TYPE_PROVIDED: "What would you like to setup? (Try \'auto pay\' or \'paperless billing\'.)",
+    PROCESSES_LIKE: "processes like",
     get SETUP_BOT_RESPONSE() {
-        // replace {0} with processType and {1} with correct phone number of agent
-        return(`You can setup {0} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {1} or contact our ${this.CLIENT_SERVICE_DEPT} at ${this.CLIENT_SERVICES_NUM}.`);
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return(`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.CLIENT_SERVICE_DEPT} at ${this.CLIENT_SERVICES_NUM}.`);
     },
 
     // ---------------------------------------------------------------------------
