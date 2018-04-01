@@ -38,7 +38,8 @@ module.exports.elicitSlot = function(sessionAttributes, intentName, slots, slotT
       type: 'ElicitSlot',
       intentName,
       slots,
-      slotToElicit
+      slotToElicit,
+      message
     }
   };
 };

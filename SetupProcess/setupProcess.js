@@ -15,10 +15,10 @@ console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 
 /**
- *
+ * builds object for validating SetupProcess intent
  */
 function buildValidationResult(isValid, violatedSlot, messageContent) {
-
+  console.log(`Building validation result for ${constants.SETUP_PROCESS_INTENT} intent`);
     if(isValid && messageContent == null) {
         return {
             isValid,
@@ -37,6 +37,7 @@ function buildValidationResult(isValid, violatedSlot, messageContent) {
  * validates SetupProcess intent
  */
 function validateSetupProcess(processType) {
+  console.log(`Validating ${constants.SETUP_PROCESS_INTENT} intent`);
 
     // user did not specify process type
     if(!processType) {
@@ -49,6 +50,31 @@ function validateSetupProcess(processType) {
     return buildValidationResult(true, null, null);
 }
 
+/**
+  * builds object for fulfilling SetupProcess intent
+  */
+function buildFulfillmentResult(fulfillmentState, messageContent) {
+  console.log(`Building fulfillment result for ${constants.SETUP_PROCESS_INTENT} intent`);
+
+  return {
+    fulfillmentState,
+    message: {
+      contentType: 'PlainText',
+      content: messageContent
+    }
+  };
+}
+
+/**
+  * fulfills SetupProcess intent
+  */
+function fulfillSetup(processType) {
+  console.log(`Fulfilling ${constants.SETUP_PROCESS_INTENT} intent`);
+  return buildFulfillmentResult(
+    constants.FULFILLED_STATUS,
+    constants.SETUP_BOT_RESPONSE.replace('{0}', processType)
+  );
+}
 
 module.exports = function(intentRequest, callback) {
     var processType = intentRequest.currentIntent.slots.processType;
@@ -64,17 +90,17 @@ module.exports = function(intentRequest, callback) {
         console.log(`Source of lambda invokation: ${source}`);
 
         const slots = intentRequest.currentIntent.slots;
-        const setupProcessValidationResult = validateSetupProcess(processType);
+        const validationResult = validateSetupProcess(processType);
 
         // invalid result: prompt user for slot
-        if(!setupProcessValidationResult.isValid) {
-            slots[`${setupProcessValidationResult.violatedSlot}`] = null;
+        if(!validationResult.isValid) {
+            slots[`${validationResult.violatedSlot}`] = null;
             callback(lexResponses.elicitSlot(
                 intentRequest.sessionAttributes,
                 intentRequest.currentIntent.name,
                 slots,
-                setupProcessValidationResult.violatedSlot,
-                setupProcessValidationResult.messageContent));
+                validationResult.violatedSlot,
+                validationResult.messageContent));
         }
 
         // valid result: delegate the intent
@@ -89,11 +115,13 @@ module.exports = function(intentRequest, callback) {
     if(source === constants.FULFILL_CODE_HOOK) {
 
         console.log(`Source of lambda invokation: ${source}`);
-        callback(lexResponses.close(
-            intentRequest.sessionAttributes,
-            'Fulfilled',
-            {'contentType': 'PlainText', 'content': constants.SETUP_BOT_RESPONSE.replace('{0}', processType)}));
 
-        return;
-    }    
+        var fulfillmentResult = fulfillSetup(processType);
+
+        callback(lexResponses.close(
+          intentRequest.sessionAttributes,
+          fulfillmentResult.fulfillmentState,
+          fulfillmentResult.message
+          ));
+    }
 }

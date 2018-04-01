@@ -28,7 +28,7 @@ module.exports = {
     NO_PROCESS_TYPE_PROVIDED: "What would you like to setup? (Try \'auto pay\' or \'paperless billing\'.)",
     get SETUP_BOT_RESPONSE() {
         // replace {0} with processType and {1} with correct phone number of agent
-        return(`You can setup {0} online at ${this.COMPANY_WEBSITE}. You may also contanct your agent at {1} or contact our ${this.CLIENT_SERVICE_DEPT} at ${this.CLIENT_SERVICES_NUM}.`);
+        return(`You can setup {0} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {1} or contact our ${this.CLIENT_SERVICE_DEPT} at ${this.CLIENT_SERVICES_NUM}.`);
     },
 
     // ---------------------------------------------------------------------------
@@ -53,4 +53,5 @@ module.exports = {
     // AWS
     DIALOG_CODE_HOOK: "DialogCodeHook",
     FULFILL_CODE_HOOK: "FulfillmentCodeHook",
+    FULFILLED_STATUS: "Fulfilled",
 };
