@@ -22,3 +22,18 @@ module.exports.delegate = function(sessionAttributes, slots) {
         },
     };
 }
+
+/**
+ * prompt user for slot
+ */
+module.exports.elicitSlot = function(sessionAttributes, intentName, slots, slotToElicit, message) {
+  return {
+    sessionAttributes,
+    dialogAction: {
+      type: 'ElicitSlot',
+      intentName,
+      slots,
+      slotToElicit
+    }
+  };
+};

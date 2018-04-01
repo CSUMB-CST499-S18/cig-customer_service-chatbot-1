@@ -7,7 +7,13 @@ module.exports = {
     
     // SetupProcess 
     SETUP_PROCESS_INTENT: "SetupProcess",
+    PROCESS_TYPE_SLOT: "processType",
     PROCESS_TYPE_VAL: "processType Value:",
+    AUTO_PAY_SLOT: "auto",
+    PAPERLESS_SLOT: "paperless",
+    NO_SETUP_SUPPORT: "Apologies. We currently do not offer support for setting up {0}. Please try again.", // replace {0} with unsupported process
+    NO_PROCESS_TYPE_PROVIDED: "What would you like to setup? (Try \'auto pay\' or \'paperless billing\'.)",
+    
     
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------

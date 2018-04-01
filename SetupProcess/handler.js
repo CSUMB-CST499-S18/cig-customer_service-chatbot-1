@@ -23,7 +23,7 @@ console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 exports.handler = (event, context, callback) => {
     try {
         console.log(`${constants.BOT_NAME_TAG} ${event.bot.name}`);
-        assert.equal(${event.bot.name}, BOT_NAME, ${constants.ERROR_BOT_NAME} ${event.bot.name});
+        assert.equal(event.bot.name, constants.BOT_NAME, `${constants.ERROR_BOT_NAME} ${event.bot.name}`);
         dispatch(event, (response) => callback(null, response));
     } catch (err) {
         callback(err);
