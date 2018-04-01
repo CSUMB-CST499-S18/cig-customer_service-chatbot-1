@@ -1,9 +1,9 @@
 /**
- * This is the main handler for the SetupProcess intent in the CIG_Chatbot bot.
+ * This is the main handler for all intents in the CIG_Chatbot bot.
  * Author: Chanel Aquino
- * Date: 3/31/2018
+ * Date: 4/1/2018
  *
- * TODO: Direct all intents to this main handler (or a centralized one called CIG_Processor) and modularize code moving forward.
+ * TODO: Direct all intents to this main handler and modularize code moving forward.
  * TODO: Create separate directories logically:
  *      1) One for each intent
  *          i) One for global constants relative to intent: slots and debugging tags
@@ -13,8 +13,8 @@
 
 'use strict';
 
-const dispatch = require('./dispatch');
 const constants = require('./constant-vars');
+const dispatch = require(constants.DISPATCH_LAMBDA_DIR);
 const assert = require('assert');
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);

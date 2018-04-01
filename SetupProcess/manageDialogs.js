@@ -6,8 +6,8 @@
 
 'use strict';
 
-const lexResponses = require('./lexResponses');
-const constants = require('./constant-vars.js');
+const constants = require('../constant-vars');
+const lexResponses = require(constants.LEX_RESPONSES_LAMBDA_DIR);
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);

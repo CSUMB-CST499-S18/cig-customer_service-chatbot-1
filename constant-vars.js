@@ -11,17 +11,19 @@ module.exports = {
 
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
-    
+
     /**
      * directory constants
      */
 
-    BOT_LAMBDA_DIR: ".",
-    get CHANGE_INFO_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/ChangeInformation_Intent`)},
-    get SETUP_PROCESS_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/SetupProcess_Intent`)},
-    get DISPATCH_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/dispatch`)},
-    get HANDLER_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/handler`)},
-    get LEX_RESPONSES_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/lexResponses`)},
+    BOT_LAMBDA_DIR: "~/",
+    CHANGE_INFO_LAMBDA_DIR: "~/ChangeInformation_Intent",
+    SETUP_PROCESS_LAMBDA_DIR: "~/SetupProcess_Intent",
+    CONSTANT_VARS_LAMBDA_DIR: "~/constant-vars",
+    DISPATCH_LAMBDA_DIR: "~/dispatch",
+    HANDLER_LAMBDA_DIR: "~/handler",
+    LEX_RESPONSES_LAMBDA_DIR: "~/lexResponses",
+
     /**
      * chatbot constants
      */
@@ -29,7 +31,6 @@ module.exports = {
 
 
     // SetupProcess intent
-    SETUP_PROCESS_LAMBDA_DIR: "~/SetupProcess_Intent",
     SETUP_PROCESS_INTENT: "SetupProcess",
     PROCESS_TYPE_SLOT: "processType",
     PROCESS_TYPE_VAL: "processType Value:",
@@ -54,7 +55,6 @@ module.exports = {
     },
 
     // ChangeInformation intent
-    CHANGE_INFO_LAMBDA_DIR: "~/ChangeInformation_Intent",
     CHANGE_INFO_INTENT: "ChangeInformation",
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------

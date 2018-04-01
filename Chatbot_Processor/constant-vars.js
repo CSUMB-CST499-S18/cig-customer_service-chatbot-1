@@ -6,12 +6,24 @@ module.exports = {
     COMPANY_NAME: "Capital Insurance Group",
     COMPANY_ABBR: "CIG",
     COMPANY_WEBSITE: "www.ciginsurance.com",
-    CLIENT_SERVICE_DEPT: "Client Services Billing Department",
-    CLIENT_SERVICES_NUM: "(877) 200-4220",
+    COMPANY_CLIENT_SERVICE_DEPT: "Client Services Billing Department",
+    COMPANY_CLIENT_SERVICES_NUM: "(877) 200-4220",
+    COMPANY_MONTEREY_NUM: "(831) 233-5500",
+    
 
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
+    
+    /**
+     * directory constants
+     */
 
+    BOT_LAMBDA_DIR: ".",
+    get CHANGE_INFO_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/ChangeInformation_Intent`)},
+    get SETUP_PROCESS_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/SetupProcess_Intent`)},
+    get DISPATCH_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/dispatch`)},
+    get HANDLER_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/handler`)},
+    get LEX_RESPONSES_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/lexResponses`)},
     /**
      * chatbot constants
      */
@@ -19,6 +31,7 @@ module.exports = {
 
 
     // SetupProcess intent
+    SETUP_PROCESS_LAMBDA_DIR: "~/SetupProcess_Intent",
     SETUP_PROCESS_INTENT: "SetupProcess",
     PROCESS_TYPE_SLOT: "processType",
     PROCESS_TYPE_VAL: "processType Value:",
@@ -39,9 +52,12 @@ module.exports = {
           * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
           *     "You can set up auto pay at www.ciginsurance.com..."
           */
-        return(`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.CLIENT_SERVICE_DEPT} at ${this.CLIENT_SERVICES_NUM}.`);
+        return(`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
 
+    // ChangeInformation intent
+    CHANGE_INFO_LAMBDA_DIR: "~/ChangeInformation_Intent",
+    CHANGE_INFO_INTENT: "ChangeInformation",
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
 

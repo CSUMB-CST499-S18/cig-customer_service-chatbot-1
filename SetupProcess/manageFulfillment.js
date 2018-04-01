@@ -6,8 +6,8 @@
 
 'use strict';
 
-const lexResponses = require('./lexResponses');
-const constants = require('./constant-vars.js');
+const constants = require('../constant-vars');
+const lexResponses = require(constants.LEX_RESPONSES_LAMBDA_DIR);
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
