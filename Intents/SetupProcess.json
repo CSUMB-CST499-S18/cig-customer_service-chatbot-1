@@ -1,0 +1,120 @@
+{
+  "sampleUtterances": [
+      "How do I set up {processType}",
+      "How do I set up",
+      "Can I set up {processType}",
+      "Can I set up",
+      "How do I setup",
+      "How do I setup {processType}",
+      "Can I setup {processType}",
+      "Can I setup",
+      "Where can I set up {processType}",
+      "Where can I setup {processType}",
+      "Where can I set up",
+      "Where can I setup",
+      "I want to set up",
+      "I want to setup",
+      "I want to set up {processType}",
+      "I want to setup {processType}",
+      "How can I set up {processType}",
+      "How can I set up",
+      "How can I setup {processType}",
+      "How can I setup",
+      "{processType}",
+      "Set up {processType}",
+      "Setup {processType}",
+      "Setup",
+      "Set up"
+    ],
+    "slots": [
+      {
+        "name": "processType",
+        "slotConstraint": "Optional",
+        "slotType": "ProcessType",
+        "slotTypeVersion": "1",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "What would you like to set up? (Try 'auto pay' or 'paperless billing')."
+            },
+            {
+              "contentType": "PlainText",
+              "content": "What can I help you set up? (Try 'auto pay' or 'paperless billing')."
+            },
+            {
+              "contentType": "PlainText",
+              "content": "What do you need help setting up? (Try 'auto pay' or 'paperless billing')."
+            }
+          ],
+          "maxAttempts": 2,
+          "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[]}"
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "dialogCodeHook": {
+      "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_Chatbot_Processor",
+      "messageVersion": "1.0"
+    },
+    "conclusionStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "You may also contact your agent at (831) 233-5500 or contact our Client Services Billing Department at (877) 200-4220."
+        },
+        {
+          "contentType": "PlainText",
+          "content": "Setting up {processType}"
+        }
+      ]
+    },
+    "slotTypes": [
+      {
+        "description": "Different types of processes",
+        "name": "ProcessType",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "auto pay",
+            "synonyms": [
+              "automatic pay",
+              "auto payment",
+              "auto",
+              "automatic",
+              "autopay"
+            ]
+          },
+          {
+            "value": "paperless billing",
+            "synonyms": [
+              "paperless bill",
+              "paperless",
+              "e billing",
+              "e bill",
+              "electronic bill",
+              "electronic billing"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  },
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "SetupProcess",
+    "version": "7",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_Chatbot_Processor",
+        "messageVersion": "1.0"
+      }
+    },
+}
