@@ -1,0 +1,31 @@
+{
+  "enumerationValues": [
+      {
+        "value": "due date",
+        "synonyms": [
+          "due",
+          "date"
+        ]
+      },
+      {
+        "value": "payment plan",
+        "synonyms": [
+          "pay plan",
+          "plan",
+          "payment",
+          "pay"
+        ]
+      }
+  ],
+  "valueSelectionStrategy": "TOP_RESOLUTION",
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "description": "Different types of information",
+    "name": "InformationType",
+    "version": "$LATEST",
+  }
+}
