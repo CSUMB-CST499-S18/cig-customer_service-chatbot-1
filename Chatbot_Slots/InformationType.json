@@ -1,14 +1,5 @@
 {
-  "metadata": {
-    "schemaVersion": "1.0",
-    "importType": "LEX",
-    "importFormat": "JSON"
-  },
-  "resource": {
-    "description": "Different types of information",
-    "name": "InformationType",
-    "version": "1",
-    "enumerationValues": [
+  "enumerationValues": [
       {
         "value": "due date",
         "synonyms": [
@@ -25,7 +16,16 @@
           "pay"
         ]
       }
-    ],
-    "valueSelectionStrategy": "TOP_RESOLUTION"
+  ],
+  "valueSelectionStrategy": "TOP_RESOLUTION",
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "description": "Different types of information",
+    "name": "InformationType",
+    "version": "$LATEST",
   }
 }
