@@ -97,3 +97,4 @@ module.exports = function(intentRequest, callback) {
       );
     }
   }
+}
