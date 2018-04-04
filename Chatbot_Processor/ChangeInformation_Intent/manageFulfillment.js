@@ -74,7 +74,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
   else {
     console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
 
-    var processType = `${constants.PAYMENT_PLAN_SLOT} or ${constants.DUE_DATE_SLOT}`;
+    var informationType = `${constants.PAYMENT_PLAN_SLOT} or ${constants.DUE_DATE_SLOT}`;
     var message = constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', constants.INFORMATION_SUCH_AS).replace('{1}', informationType);
     var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
 
