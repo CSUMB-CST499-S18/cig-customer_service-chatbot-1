@@ -9,11 +9,11 @@ module.exports = {
     COMPANY_CLIENT_SERVICE_DEPT: "Client Services Billing Department",
     COMPANY_CLIENT_SERVICES_NUM: "(877) 200-4220",
     COMPANY_MONTEREY_NUM: "(831) 233-5500",
-    
+
 
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
-    
+
     /**
      * directory constants
      */
@@ -58,6 +58,28 @@ module.exports = {
     // ChangeInformation intent
     CHANGE_INFO_LAMBDA_DIR: "~/ChangeInformation_Intent",
     CHANGE_INFO_INTENT: "ChangeInformation",
+    INFORMATION_TYPE_SLOT: "informationType",
+    INFORMATION_TYPE_VAL: "informationType Value:",
+    DUE_DATE_SYNONYM: "due",
+    DUE_DATE_SYNONYM2: "date",
+    DUE_DATE_SLOT: "due date",
+    PAYMENT_PLAN_SYNONYM: "pay",
+    PAYMENT_PLAN_SYNONYM2: "plan",
+    PAYMENT_PLAN_SLOT: "payment plan",
+    INFORMATION_SUCH_AS: "information such as",
+    get CHANGE_INFO_BOT_RESPONSE() {
+        // replace {0} with INFORMATION_SUCH_AS if user did not provide informationType; else replace with empty string
+        // replace {1} with informationType provided by user or by default informationTypes if user did not provide
+        /**
+          * For example, if the user did not provide an informationType, then CHANGE_INFO_BOT_RESPONSE will be:
+          *     "Please contact our Client Services Billing Department at (877) 200-4220 to make any changes to information such as your payment plan or due date".
+          * If the user DID provide an informationType (e.g., 'due date', 'date', 'payment', or 'pay plan'), then CHANGE_INFO_BOT_RESPONSE will be:
+          *     "Please contact our Client Services Billing Department at (877) 200-4220 to make any changes to your payment plan".
+          */
+        return(`Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to make any changes to {0} your {1}.`);
+    },
+
+    
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
 
