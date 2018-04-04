@@ -37,13 +37,13 @@ function fulfillChangeInfo(informationType) {
   if(informationType === `${constants.PAYMENT_PLAN_SLOT} or ${constants.DUE_DATE_SLOT}`) {
     return buildFulfillmentResult(
       constants.FULFILLED_STATUS,
-      constants.SETUP_BOT_RESPONSE.replace('{0}', constants.INFORMATION_SUCH_AS).replace('{1}', informationType)
+      constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', constants.INFORMATION_SUCH_AS).replace('{1}', informationType)
     );
   }
 
   return buildFulfillmentResult(
     constants.FULFILLED_STATUS,
-    constants.SETUP_BOT_RESPONSE.replace('{0}', "").replace('{1}', informationType)
+    constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', "").replace('{1}', informationType)
   );
 }
 
