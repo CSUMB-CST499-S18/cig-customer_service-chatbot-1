@@ -1,7 +1,13 @@
 module.exports = {
 
+    // TODO: get slot values from slot json files rather than having variables like AUTO_PAY_SLOT, PAYMENT_PLAN_SYNONYM, etc.
+    // TODO: add constants for remaining intents
     /**
+     *
+     *
      * CIG constants
+     *
+     *
      */
     COMPANY_NAME: "Capital Insurance Group",
     COMPANY_ABBR: "CIG",
@@ -11,26 +17,45 @@ module.exports = {
     COMPANY_MONTEREY_NUM: "(831) 233-5500",
 
 
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
-
     /**
-     * directory constants
+     *
+     *
+     * debugging constants
+     *
+     *
      */
+    BOT_NAME_TAG: "Bot name: ",
+    CURRENT_FILE: "Currently in file:",
+    CURRENT_DIR: "Currently in directory:",
+    DISPATCH_TAG: "Dispatch userId:",
+    INTENT_TAG: "Intent Name:",
+    SLOT_TAG: "Slot Type:",
 
-    BOT_LAMBDA_DIR: ".",
-    get CHANGE_INFO_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/ChangeInformation_Intent`)},
-    get SETUP_PROCESS_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/SetupProcess_Intent`)},
-    get DISPATCH_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/dispatch`)},
-    get HANDLER_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/handler`)},
-    get LEX_RESPONSES_LAMBDA_DIR() { return(`${this.BOT_LAMBDA_DIR}/lexResponses`)},
+    // errors
+    ERROR_BOT_NAME: "The following bot is not supported:",
+    ERROR_INTENT: "The following intent is not supported:",
+    ERROR_SLOT: "The following slot is not supported:",
+
+    // AWS
+    DIALOG_CODE_HOOK: "DialogCodeHook",
+    FULFILL_CODE_HOOK: "FulfillmentCodeHook",
+    FULFILLED_STATUS: "Fulfilled",
+
+
     /**
+     *
+     *
      * chatbot constants
+     *
+     *
      */
     BOT_NAME: "CIG_Chatbot",
 
-
+    // ------------------------------------
     // SetupProcess intent
+    // ------------------------------------
+    //
+    //
     SETUP_PROCESS_LAMBDA_DIR: "~/SetupProcess_Intent",
     SETUP_PROCESS_INTENT: "SetupProcess",
     PROCESS_TYPE_SLOT: "processType",
@@ -55,7 +80,11 @@ module.exports = {
         return(`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
 
+    // ------------------------------------
     // ChangeInformation intent
+    // ------------------------------------
+    //
+    //
     CHANGE_INFO_LAMBDA_DIR: "~/ChangeInformation_Intent",
     CHANGE_INFO_INTENT: "ChangeInformation",
     INFORMATION_TYPE_SLOT: "informationType",
@@ -78,29 +107,4 @@ module.exports = {
           */
         return(`Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to make any changes to {0} your {1}.`);
     },
-
-    
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
-
-    /**
-     * debugging constants
-     */
-
-    BOT_NAME_TAG: "Bot name: ",
-    CURRENT_FILE: "Currently in file:",
-    CURRENT_DIR: "Currently in directory:",
-    DISPATCH_TAG: "Dispatch userId:",
-    INTENT_TAG: "Intent Name:",
-    SLOT_TAG: "Slot Type:",
-
-    // errors
-    ERROR_BOT_NAME: "The following bot is not supported:",
-    ERROR_INTENT: "The following intent is not supported:",
-    ERROR_SLOT: "The following slot is not supported:",
-
-    // AWS
-    DIALOG_CODE_HOOK: "DialogCodeHook",
-    FULFILL_CODE_HOOK: "FulfillmentCodeHook",
-    FULFILLED_STATUS: "Fulfilled",
 };
