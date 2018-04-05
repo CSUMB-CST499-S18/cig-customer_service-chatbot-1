@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const setupProcess = require('../Chatbot_Processor/SetupProcess_Intent/setupProcess.js');
 
 describe('FulfillmentCodeHook with no slots', () => {
-  it('Customer asks, \'how can I setup\'', () => {
+  it('Customer asks, \'how can I setup\'', function(done) {
 
     // jest.setTimeout(15000);
     const intentRequest = {
@@ -31,5 +31,6 @@ describe('FulfillmentCodeHook with no slots', () => {
 
     const response = setupProcess(intentRequest);
     assert.equal(response.dialogAction.fulfillmentState, 'Fulfilled');
+    done();
   }); // end it()
 }); // end describe(FulfillmentCodeHook with no slots)
