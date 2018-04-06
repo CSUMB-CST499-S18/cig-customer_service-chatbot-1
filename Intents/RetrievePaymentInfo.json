@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "RetrievePaymentInfo",
+    "version": "14",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:255005908970:function:CIGCodeHook",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "whens my {value} due",
+      "how much is my {value}",
+      "can I see my {value} amount",
+      "I want to view my {value} date",
+      "see {value}",
+      "when {value}",
+      "how much {value}"
+    ],
+    "slots": [
+      {
+        "name": "value",
+        "slotConstraint": "Required",
+        "slotType": "InfoType",
+        "slotTypeVersion": "2",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "ok, payment amount or payment date?"
+            }
+          ],
+          "maxAttempts": 2,
+          "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[]}"
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "Payment amount and date",
+        "name": "InfoType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "date",
+            "synonyms": [
+              "deadline",
+              "due,"
+            ]
+          },
+          {
+            "value": "amount",
+            "synonyms": [
+              "how much"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}

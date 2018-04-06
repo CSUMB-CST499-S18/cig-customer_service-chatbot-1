@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "MakePayment",
+    "version": "8",
+    "fulfillmentActivity": {
+      "type": "ReturnIntent"
+    },
+    "sampleUtterances": [
+      "I would like to pay my {bill}",
+      "where can I pay my {bill}",
+      "I want to pay my {bill}",
+      "how can I pay my {bill}",
+      "my {bill}",
+      "make payment",
+      "pay my {bill}",
+      "pay"
+    ],
+    "slots": [
+      {
+        "name": "bill",
+        "slotConstraint": "Required",
+        "slotType": "Bill",
+        "slotTypeVersion": "2",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "What would you like to do?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "conclusionStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Here's how"
+        }
+      ],
+      "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://www.gainesins.com/images/cig-logo.gif\",\"title\":\"Different ways you can pay your bill\",\"buttons\":[{\"text\":\"Online\",\"value\":\"https://www.ciginsurance.com/\"},{\"text\":\"Phone\",\"value\":\"(877) 200-4220\"},{\"text\":\"Local Agent\",\"value\":\"Contact your local agent\"}]}]}"
+    },
+    "slotTypes": [
+      {
+        "description": "Make payment toward bill",
+        "name": "Bill",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "bill",
+            "synonyms": [
+              "invoice",
+              "statement"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
