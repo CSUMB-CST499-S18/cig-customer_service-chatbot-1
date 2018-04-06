@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "GetNoticeInfo",
+    "version": "3",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_NoticeInformationProcessor",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "Why did I get a cancellation notice",
+      "I have a cancellation notice",
+      "Why am I getting a cancellation notice",
+      "How do I get a cancellation notice",
+      "Why did you cancel my policy",
+      "Why was my policy cancelled",
+      "Was there a reason that my policy was cancelled",
+      "My notice",
+      "Notice",
+      "Cancellations"
+    ],
+    "slots": [],
+    "slotTypes": []
+  }
+}

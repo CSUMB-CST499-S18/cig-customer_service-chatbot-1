@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "DifferentPayment",
+    "version": "3",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:diffPayValues",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "Why did my {value}",
+      "My {payType} went {value}",
+      "Why am I getting charged {value}",
+      "Why did my {payType} go {value}",
+      "My {payType} is different",
+      "different {payType}",
+      "different",
+      "diff {payType}"
+    ],
+    "slots": [
+      {
+        "name": "value",
+        "slotConstraint": "Required",
+        "slotType": "ValueType",
+        "slotTypeVersion": "1",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Did it increase or decrease?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      },
+      {
+        "name": "payType",
+        "slotConstraint": "Optional",
+        "slotType": "PaymentType",
+        "slotTypeVersion": "2",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Is it a bill or a payment?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 2,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "ValueType",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "increase",
+            "synonyms": [
+              "higher",
+              "up",
+              "more",
+              "payment increase",
+              "bill increase"
+            ]
+          },
+          {
+            "value": "decrease",
+            "synonyms": [
+              "lower",
+              "down",
+              "less",
+              "payment decrease",
+              "bill decrease"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      },
+      {
+        "name": "PaymentType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "payment",
+            "synonyms": [
+              "bill",
+              "invoice"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}

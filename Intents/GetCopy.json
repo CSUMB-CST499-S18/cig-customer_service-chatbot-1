@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "GetCopy",
+    "version": "5",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_CopyInformationProcessor",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "I want a copy of my {payType}",
+      "Where can I get a copy of my {payType}",
+      "How come I didn't get a {payType}",
+      "Where is my {payType}",
+      "I can't find my {payType}",
+      "How can I find my {payType}",
+      "I want my {payType} copy",
+      "Copy of {payType}",
+      "Get {payType} information",
+      "{payType}",
+      "Copy"
+    ],
+    "slots": [
+      {
+        "name": "payType",
+        "slotConstraint": "Optional",
+        "slotType": "PaymentType",
+        "slotTypeVersion": "2",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Is it a bill or a payment?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "PaymentType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "payment",
+            "synonyms": [
+              "bill",
+              "invoice"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
