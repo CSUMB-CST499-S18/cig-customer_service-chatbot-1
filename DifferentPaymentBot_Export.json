@@ -6,11 +6,11 @@
   },
   "resource": {
     "name": "DifferentPaymentBot",
-    "version": "3",
+    "version": "4",
     "intents": [
       {
         "name": "DifferentPayment",
-        "version": "3",
+        "version": "4",
         "fulfillmentActivity": {
           "type": "CodeHook",
           "codeHook": {
@@ -26,7 +26,12 @@
           "Why did my bill go {value}",
           "Why did my payment go {value}",
           "My payment is different",
-          "My bill is different"
+          "My bill is different",
+          "diff bill",
+          "diff payment",
+          "different payment",
+          "different bill",
+          "different"
         ],
         "slots": [
           {
@@ -50,7 +55,7 @@
       },
       {
         "name": "GetPolicyInfo",
-        "version": "2",
+        "version": "3",
         "fulfillmentActivity": {
           "type": "CodeHook",
           "codeHook": {
@@ -61,13 +66,15 @@
         "sampleUtterances": [
           "What are my policies",
           "What is this policy",
-          "What type of policies do I have"
+          "What type of policies do I have",
+          "policies",
+          "accounts"
         ],
         "slots": []
       },
       {
         "name": "GetCopy",
-        "version": "5",
+        "version": "10",
         "fulfillmentActivity": {
           "type": "CodeHook",
           "codeHook": {
@@ -82,14 +89,18 @@
           "Where is my {amtType}",
           "I can't find my {amtType}",
           "How can I find my {amtType}",
-          "I want my {amtType} copy"
+          "I want my {amtType} copy",
+          "Copy",
+          "Copy of {amtType}",
+          "Get {amtType} information",
+          "{amtType}"
         ],
         "slots": [
           {
             "name": "amtType",
             "slotConstraint": "Optional",
             "slotType": "AmountType",
-            "slotTypeVersion": "1",
+            "slotTypeVersion": "2",
             "valueElicitationPrompt": {
               "messages": [
                 {
@@ -106,7 +117,7 @@
       },
       {
         "name": "GetNoticeInfo",
-        "version": "3",
+        "version": "4",
         "fulfillmentActivity": {
           "type": "CodeHook",
           "codeHook": {
@@ -121,7 +132,10 @@
           "How do I get a cancellation notice",
           "Why did you cancel my policy",
           "Why was my policy cancelled",
-          "Was there a reason that my policy was cancelled"
+          "Was there a reason that my policy was cancelled",
+          "My notice",
+          "Notice",
+          "Cancellations"
         ],
         "slots": []
       }
@@ -157,11 +171,12 @@
       {
         "description": "Bill/Payment",
         "name": "AmountType",
-        "version": "1",
+        "version": "2",
         "enumerationValues": [
           {
             "value": "payment",
             "synonyms": [
+              "invoice",
               "bill"
             ]
           }
