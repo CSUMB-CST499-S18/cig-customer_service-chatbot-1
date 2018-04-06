@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "GetPolicyInfo",
+    "version": "5",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_PolicyInformationProcessor",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "What are my {polSyn}",
+      "What type of {polSyn} do I have",
+      "{polSyn}"
+    ],
+    "slots": [
+      {
+        "name": "polSyn",
+        "slotConstraint": "Optional",
+        "slotType": "policySyn",
+        "slotTypeVersion": "1",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Are you referring to policy?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "policySyn",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "policy",
+            "synonyms": [
+              "policies"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
