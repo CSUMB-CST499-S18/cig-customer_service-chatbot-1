@@ -23,14 +23,9 @@ describe('FulfillmentCodeHook with no slots', () => {
       inputTranscript: 'yes'
     };
 
-    // setupProcess(intentRequest).then(response => {
-    //   //assert.equal(response.dialogAction.type, 'Close');
-    //   assert.equal(response.dialogAction.fulfillmentState, 'Fulfilled');
-    //   done();
-    // });
-
     const response = setupProcess(intentRequest);
     assert.equal(response.dialogAction.fulfillmentState, 'Fulfilled');
+    // TODO: check for bot response
     done();
   }); // end it()
 }); // end describe(FulfillmentCodeHook with no slots)
