@@ -50,7 +50,7 @@ module.exports = {
      *
      */
     BOT_NAME: "CIG_Chatbot",
-
+    DEFAULT_NUM_BOT_RESPONSES: 5,
     // ------------------------------------
     // SetupProcess intent
     // ------------------------------------
@@ -77,7 +77,40 @@ module.exports = {
           * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
           *     "You can set up auto pay at www.ciginsurance.com..."
           */
-        return(`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+        return (`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}.
+          You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+          at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE2() {
+      // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+      // replace {1} with processType provided by user or by default processTypes if user did not provide
+      // replace {2} with correct phone number of agent
+      return (`To set up {0} {1}, please visit us online at ${this.COMPANY_WEBSITE} or
+        contact your agent at {2}. You can also contact our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+        at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE3() {
+      // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+      // replace {1} with processType provided by user or by default processTypes if user did not provide
+      // replace {2} with correct phone number of agent
+      return (`If you would like to set up {0} {1}, please visit us online at ${this.COMPANY_WEBSITE} or
+        contact your agent at {2}. You can also contact our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+        at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE4() {
+      // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+      // replace {1} with processType provided by user or by default processTypes if user did not provide
+      // replace {2} with correct phone number of agent
+      return(`We'd be glad to help you set up {0} {1}! To do so, please visit us online at ${this.COMPANY_WEBSITE}. You
+        may also call your agent at {2} or contact our our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+        at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE5() {
+      // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+      // replace {1} with processType provided by user or by default processTypes if user did not provide
+      // replace {2} with correct phone number of agent
+      return(`One of our client service representatives would be glad to help you set up {0} {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+        at ${this.COMPANY_CLIENT_SERVICES_NUM}. You may also visit us online at ${this.COMPANY_WEBSITE} or call your agent at {2}.`);
     },
 
     // ------------------------------------
@@ -105,6 +138,31 @@ module.exports = {
           * If the user DID provide an informationType (e.g., 'due date', 'date', 'payment', or 'pay plan'), then CHANGE_INFO_BOT_RESPONSE will be:
           *     "Please contact our Client Services Billing Department at (877) 200-4220 to make any changes to your payment plan".
           */
-        return(`Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to make any changes to {0} your {1}.`);
+        return(`Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at
+          ${this.COMPANY_CLIENT_SERVICES_NUM} to make any changes to {0} your {1}.`);
+    },
+    get CHANGE_INFO_BOT_RESPONSE2() {
+      // replace {0} with INFORMATION_SUCH_AS if user did not provide informationType; else replace with empty string
+      // replace {1} with informationType provided by user or by default informationTypes if user did not provide
+      return(`To make changes to {0} your {1}, please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at
+        ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get CHANGE_INFO_BOT_RESPONSE3() {
+      // replace {0} with INFORMATION_SUCH_AS if user did not provide informationType; else replace with empty string
+      // replace {1} with informationType provided by user or by default informationTypes if user did not provide
+      return(`If you would like to make changes to {0} your {1}, please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at
+        ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get CHANGE_INFO_BOT_RESPONSE4() {
+      // replace {0} with INFORMATION_SUCH_AS if user did not provide informationType; else replace with empty string
+      // replace {1} with informationType provided by user or by default informationTypes if user did not provide
+      return(`One of our client service representatives would be glad to help you make
+        changes to {0} your {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to get this started.`);
+    },
+    get CHANGE_INFO_BOT_RESPONSE5() {
+      // replace {0} with INFORMATION_SUCH_AS if user did not provide informationType; else replace with empty string
+      // replace {1} with informationType provided by user or by default informationTypes if user did not provide
+      return(`We'd be glad to help you make changes to {0} your {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT}
+        at ${this.COMPANY_CLIENT_SERVICES_NUM} to get this started.`);
     },
 };
