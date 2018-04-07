@@ -24,12 +24,13 @@ module.exports = function(intentRequest, callback) {
     // SetupProcess intent
     if(intentName === constants.SETUP_PROCESS_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
-        return setupProcess(intentRequest, callback);
+        return setupProcess(intentRequest);
     }
 
     // ChangeInformation intent
     if(intentName === constants.CHANGE_INFO_INTENT) {
-        // do something
+      console.log(`${constants.INTENT_TAG} ${intentName}`);
+      return changeInformation(intentRequest);
     }
 
     // unsupported intent
