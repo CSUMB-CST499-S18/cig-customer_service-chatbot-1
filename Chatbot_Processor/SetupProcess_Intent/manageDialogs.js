@@ -18,7 +18,7 @@ console.log(`${constants.CURRENT_DIR} ${__dirname}`);
  */
 function buildValidationResult(isValid, violatedSlot, messageContent) {
   console.log(`Building validation result for ${constants.SETUP_PROCESS_INTENT} intent`);
-    
+
     if(isValid) {
       // either the user did not specify slot for processType, so one was provided for it
       // or the user did provide a slot, therefore no error message
@@ -60,7 +60,7 @@ function validateSetupProcess(processType) {
 /**
   * handleDialogCodeHook(intentRequest)
   */
-module.exports = function(intentRequest, callback) {
+module.exports = function(intentRequest) {
   console.log(`In ${constants.DIALOG_CODE_HOOK} for ${constants.SETUP_PROCESS_INTENT}`);
 
   var processType = intentRequest.currentIntent.slots.processType;
@@ -73,19 +73,22 @@ module.exports = function(intentRequest, callback) {
   if(!validationResult.isValid) {
     console.log(`Validation is not valid: ${validationResult.isValid == false}`);
       slots[`${validationResult.violatedSlot}`] = null;
-      callback(lexResponses.elicitSlot(
+
+      return Promise.resolve(
+        lexResponses.elicitSlot(
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.name,
           slots,
           validationResult.violatedSlot,
-          validationResult.messageContent)
+          validationResult.messageContent
+        )
       );
   }
 
   // valid result
   else {
     console.log(`Validation is not valid: ${validationResult.isValid == true}`);
-    
+
     // user did not provide procesType slot; fulfill the intent
     if(validationResult.violatedSlot === constants.PROCESS_TYPE_SLOT) {
       console.log(`${constants.CURRENT_FILE} ${__filename}, with a valid result but not processType`);
@@ -95,9 +98,12 @@ module.exports = function(intentRequest, callback) {
 
     // user provided slot; delegate the intent
     else {
-      callback(lexResponses.delegate(
-        intentRequest.sessionAttributes,
-        intentRequest.currentIntent.slots)
+
+      return Promise.resolve(
+        lexResponses.delegate(
+          intentRequest.sessionAttributes,
+          intentRequest.currentIntent.slots
+        )
       );
     }
   }
