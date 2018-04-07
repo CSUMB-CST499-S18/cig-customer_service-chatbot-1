@@ -45,10 +45,8 @@ function validateSetupProcess(processType) {
 
     // processType slot not required; user did not specify process type
     if(!processType) {
-        // var errorMessage = constants.NO_PROCESS_TYPE_PROVIDED;
-        // return buildValidationResult(false, constants.PROCESS_TYPE_SLOT, errorMessage);
-
         console.log('User did not provided slot for setupprocess intent');
+
         // fulfill the SetupProcess intent
         return buildValidationResult(true, constants.PROCESS_TYPE_SLOT, null);
     }
@@ -74,8 +72,7 @@ module.exports = function(intentRequest) {
     console.log(`Validation is not valid: ${validationResult.isValid == false}`);
       slots[`${validationResult.violatedSlot}`] = null;
 
-      return Promise.resolve(
-        lexResponses.elicitSlot(
+      return (lexResponses.elicitSlot(
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.name,
           slots,
@@ -93,14 +90,12 @@ module.exports = function(intentRequest) {
     if(validationResult.violatedSlot === constants.PROCESS_TYPE_SLOT) {
       console.log(`${constants.CURRENT_FILE} ${__filename}, with a valid result but not processType`);
       console.log(`Violated slot: ${validationResult.violatedSlot}`);
-      return handleFulfillmentCodeHook(intentRequest, true, callback);
+      return handleFulfillmentCodeHook(intentRequest, true);
     }
 
     // user provided slot; delegate the intent
     else {
-
-      return Promise.resolve(
-        lexResponses.delegate(
+      return (lexResponses.delegate(
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.slots
         )

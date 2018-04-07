@@ -50,7 +50,7 @@ function fulfillSetup(processType) {
 /**
   * handleFulfillmentCodeHook(intentRequest)
   */
-module.exports = function(intentRequest, redirectedFromDialogs = false, callback) {
+module.exports = function(intentRequest, redirectedFromDialogs = false) {
 
   // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
   if(!redirectedFromDialogs) {
@@ -61,7 +61,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
 
     var fulfillmentResult = fulfillSetup(processType);
 
-    return(lexResponses.close(
+    return (lexResponses.close(
       intentRequest.sessionAttributes,
       fulfillmentResult.fulfillmentState,
       fulfillmentResult.message
@@ -78,7 +78,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
     var message = constants.SETUP_BOT_RESPONSE.replace('{0}', constants.PROCESSES_LIKE).replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM);
     var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
 
-    return(lexResponses.close(
+    return (lexResponses.close(
       intentRequest.sessionAttributes,
       fulfillmentResult.fulfillmentState,
       fulfillmentResult.message
