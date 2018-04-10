@@ -13,7 +13,7 @@ const handleDialogCodeHook = require('./manageDialogs');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 const lexResponses = require('../lexResponses');
 
-module.exports = function(intentRequest) {
+module.exports = function(intentRequest, callback) {
 
     // source of lambda invokation
     const source = intentRequest.invocationSource;
@@ -21,11 +21,11 @@ module.exports = function(intentRequest) {
 
     // source of lambda invokation is Dialog Code Hook
     if(source === constants.DIALOG_CODE_HOOK) {
-        return handleDialogCodeHook(intentRequest);
+        return handleDialogCodeHook(intentRequest, callback);
     }
 
     // source of lambda invokation of Fulfillment Code Hook
     if(source === constants.FULFILL_CODE_HOOK) {
-        return handleFulfillmentCodeHook(intentRequest, false);
+        return handleFulfillmentCodeHook(intentRequest, false, callback);
     }
 }

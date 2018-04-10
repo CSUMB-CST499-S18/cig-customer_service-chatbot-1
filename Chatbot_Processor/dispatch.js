@@ -38,13 +38,13 @@ module.exports = function(intentRequest, callback) {
     // SetupProcess intent
     if(intentName === constants.SETUP_PROCESS_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
-        return setupProcess(intentRequest);
+        return setupProcess(intentRequest, callback);
     }
 
     // ChangeInformation intent
     if(intentName === constants.CHANGE_INFO_INTENT) {
       console.log(`${constants.INTENT_TAG} ${intentName}`);
-      return changeInformation(intentRequest);
+      return changeInformation(intentRequest, callback);
     }
 
     // unsupported intent

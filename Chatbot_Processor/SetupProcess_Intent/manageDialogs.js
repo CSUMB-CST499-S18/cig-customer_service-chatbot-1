@@ -58,7 +58,7 @@ function validateSetupProcess(processType) {
 /**
   * handleDialogCodeHook(intentRequest)
   */
-module.exports = function(intentRequest) {
+module.exports = function(intentRequest, callback) {
   console.log(`In ${constants.DIALOG_CODE_HOOK} for ${constants.SETUP_PROCESS_INTENT}`);
 
   var processType = intentRequest.currentIntent.slots.processType;
@@ -72,7 +72,7 @@ module.exports = function(intentRequest) {
     console.log(`Validation is not valid: ${validationResult.isValid == false}`);
       slots[`${validationResult.violatedSlot}`] = null;
 
-      return (lexResponses.elicitSlot(
+      callback (lexResponses.elicitSlot(
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.name,
           slots,
@@ -90,12 +90,12 @@ module.exports = function(intentRequest) {
     if(validationResult.violatedSlot === constants.PROCESS_TYPE_SLOT) {
       console.log(`${constants.CURRENT_FILE} ${__filename}, with a valid result but not processType`);
       console.log(`Violated slot: ${validationResult.violatedSlot}`);
-      return handleFulfillmentCodeHook(intentRequest, true);
+      return handleFulfillmentCodeHook(intentRequest, true, callback);
     }
 
     // user provided slot; delegate the intent
     else {
-      return (lexResponses.delegate(
+      callback (lexResponses.delegate(
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.slots
         )

@@ -50,7 +50,7 @@ function fulfillSetup(processType) {
 /**
   * handleFulfillmentCodeHook(intentRequest)
   */
-module.exports = function(intentRequest, redirectedFromDialogs = false) {
+module.exports = function(intentRequest, redirectedFromDialogs = false, callback) {
 
   // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
   if(!redirectedFromDialogs) {
@@ -61,7 +61,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false) {
 
     var fulfillmentResult = fulfillSetup(processType);
 
-    return (lexResponses.close(
+    callback (lexResponses.close(
       intentRequest.sessionAttributes,
       fulfillmentResult.fulfillmentState,
       fulfillmentResult.message
@@ -74,11 +74,11 @@ module.exports = function(intentRequest, redirectedFromDialogs = false) {
   else {
     console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
 
-    var processType = `${constants.AUTO_PAY_SLOT} or ${constants.PAPERLESS_SLOT}`;
-    var message = constants.SETUP_BOT_RESPONSE.replace('{0}', constants.PROCESSES_LIKE).replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM);
+    const processType = `${constants.AUTO_PAY_SLOT} or ${constants.PAPERLESS_SLOT}`;
+    const message = constants.SETUP_BOT_RESPONSE.replace('{0}', constants.PROCESSES_LIKE).replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM);
     var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
 
-    return (lexResponses.close(
+    callback (lexResponses.close(
       intentRequest.sessionAttributes,
       fulfillmentResult.fulfillmentState,
       fulfillmentResult.message
