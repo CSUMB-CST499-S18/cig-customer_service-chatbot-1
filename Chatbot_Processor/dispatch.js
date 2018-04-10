@@ -8,8 +8,22 @@
 
 'use strict';
 
+/**
+ * files necessary for redirecting
+ */
+// constant variables
 const constants = require('./constant-vars');
+
+// all intents
 const setupProcess = require('./SetupProcess_Intent/setupProcess');
+const changeInformation = require('./ChangeInformation_Intent/changeInformation');
+const differentPayment = require('./DifferentPayment_Intent/differentPayment');
+const getFeeInformation = require('./GetFeeInformation_Intent/getFeeInformation');
+const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
+const getCopy = require('./GetCopy_Intent/getCopy');
+const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
+const makePayment = require('./MakePayment_Intent/makePayment');
+const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
 
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);
