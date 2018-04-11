@@ -51,6 +51,29 @@ module.exports = {
      */
     BOT_NAME: "CIG_Chatbot",
     DEFAULT_NUM_BOT_RESPONSES: 5,
+
+
+    // ------------------------------------
+    // Greeting intent
+    // ------------------------------------
+    //
+    //
+    GREETING_INTENT: "Greeting",
+    get GREET_BOT_RESPONSE() {
+
+    },
+    get GREET_BOT_RESPONSE2() {
+
+    },
+    get GREET_BOT_RESPONSE3() {
+
+    },
+    get GREET_BOT_RESPONSE4() {
+
+    },
+    get GREET_BOT_RESPONSE5() {
+
+    },
     // ------------------------------------
     // SetupProcess intent
     // ------------------------------------

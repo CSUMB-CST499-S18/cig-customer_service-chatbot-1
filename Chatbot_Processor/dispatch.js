@@ -17,18 +17,17 @@ const constants = require('./constant-vars');
 // all intents
 const setupProcess = require('./SetupProcess_Intent/setupProcess');
 const changeInformation = require('./ChangeInformation_Intent/changeInformation');
-const differentPayment = require('./DifferentPayment_Intent/differentPayment');
-const getFeeInformation = require('./GetFeeInformation_Intent/getFeeInformation');
-const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
-const getCopy = require('./GetCopy_Intent/getCopy');
-const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
-const makePayment = require('./MakePayment_Intent/makePayment');
-const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
+const greetCustomer = require('./Greeting_Intent/greetCustomer');
+// const differentPayment = require('./DifferentPayment_Intent/differentPayment');
+// const getFeeInformation = require('./GetFeeInformation_Intent/getFeeInformation');
+// const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
+// const getCopy = require('./GetCopy_Intent/getCopy');
+// const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
+// const makePayment = require('./MakePayment_Intent/makePayment');
+// const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
 
 
-console.log(`${constants.CURRENT_FILE} ${__filename}`);
-console.log(`${constants.CURRENT_DIR} ${__dirname}`);
-
+console.log(`${constants.CURRENT_FILE} ${__filename}\n${constants.CURRENT_DIR} ${__dirname}`);
 
 module.exports = function(intentRequest, callback) {
     console.log(`${constants.DISPATCH_TAG} ${intentRequest.userId}, ${constants.INTENT_TAG} ${intentRequest.currentIntent.name}`);
@@ -43,8 +42,13 @@ module.exports = function(intentRequest, callback) {
 
     // ChangeInformation intent
     if(intentName === constants.CHANGE_INFO_INTENT) {
-      console.log(`${constants.INTENT_TAG} ${intentName}`);
-      return changeInformation(intentRequest, callback);
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return changeInformation(intentRequest, callback);
+    }
+
+    // Greeting intent
+    if(intentName === constants.GREETING_INTENT) {
+        return greetCustomer(intentRequest, callback);
     }
 
     // unsupported intent
