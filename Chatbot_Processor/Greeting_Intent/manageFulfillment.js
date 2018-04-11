@@ -30,8 +30,8 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
 /**
  * fulfills Greeting intent
  */
-function fulfillGreeting() {
- const bot_response = getBotResponse();
+function fulfillGreeting(greeting) {
+ const bot_response = getBotResponse(greeting);
  return buildFulfillmentResult(
     constants.FULFILLED_STATUS,
     bot_response
@@ -43,7 +43,9 @@ function fulfillGreeting() {
   */
 module.exports = function(intentRequest, callback) {
 
-  var fulfillmentResult = fulfillGreeting();
+  var greeting = intentRequest.currentIntent.slots.greetingType;
+
+  var fulfillmentResult = fulfillGreeting(greeting);
 
   callback (lexResponses.close(
     intentRequest.sessionAttributes,
