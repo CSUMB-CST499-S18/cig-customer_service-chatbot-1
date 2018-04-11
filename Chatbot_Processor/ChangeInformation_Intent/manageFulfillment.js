@@ -12,6 +12,38 @@ const lexResponses = require('../lexResponses');
 console.log(`${constants.CURRENT_FILE} ${__filename}\n
   ${constants.CURRENT_DIR} ${__dirname}`);
 
+const NUM_RESPONSES = constants.DEFAULT_NUM_BOT_RESPONSES;
+
+/**
+ * @param infoType
+ *    either a valid, user-provided information type or a default information type if user did not provide one
+ * @return
+ *    returns a randomly-selected response
+ */
+function getChangeInfoResponse(infoType) {
+  const random_response_num = Math.floor(Math.random() * NUM_RESPONSES) + 1; // random number between 1 and NUM_RESPONSES
+  var infoSuchAs = constants.INFORMATION_SUCH_AS;
+
+  if(infoType != constants.DEFAULT_INFO_TYPE) {
+    infoSuchAs = "";
+  }
+
+  switch(random_response_num) {
+    case 1:
+      return constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', infoSuchAs).replace('{1}', infoType);
+    case 2:
+      return constants.CHANGE_INFO_BOT_RESPONSE2.replace('{0}', infoSuchAs).replace('{1}', infoType);
+    case 3:
+      return constants.CHANGE_INFO_BOT_RESPONSE3.replace('{0}', infoSuchAs).replace('{1}', infoType);
+    case 4:
+      return constants.CHANGE_INFO_BOT_RESPONSE4.replace('{0}', infoSuchAs).replace('{1}', infoType);
+    case 5:
+      return constants.CHANGE_INFO_BOT_RESPONSE5.replace('{0}', infoSuchAs).replace('{1}', infoType);
+    default:
+      break;
+  }
+}
+
 /**
   * builds object for fulfilling ChangeInformation intent
   */
@@ -27,64 +59,48 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
   };
 }
 
+
+
 /**
   * fulfills ChangeInformation intent
   */
-function fulfillChangeInfo(informationType) {
+function fulfillChangeInfo(infoType) {
   console.log(`Fulfilling ${constants.CHANGE_INFO_INTENT} intent\n
-    informationType: ${informationType}`);
+    infoType: ${infoType}`);
 
-  if(informationType === `${constants.PAYMENT_PLAN_SLOT} or ${constants.DUE_DATE_SLOT}`) {
-    return buildFulfillmentResult(
-      constants.FULFILLED_STATUS,
-      constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', constants.INFORMATION_SUCH_AS).replace('{1}', informationType)
-    );
-  }
+  const bot_response = getChangeInfoResponse(infoType);
+  console.log(`bot response: ${bot_response}`);
 
   return buildFulfillmentResult(
     constants.FULFILLED_STATUS,
-    constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', "").replace('{1}', informationType)
+    bot_response
   );
+}
+
+/**
+ * @param infoType
+ *    type of information that user wants to change
+ * @return
+ *    if infoType is NULL (i.e., user did not provide one), return default info type
+ *    else, return infoType
+ */
+function getValidInformationType(infoType) {
+  if(!infoType) return constants.DEFAULT_INFO_TYPE;
+  return infoType;
 }
 
 /**
   * handleFulfillmentCodeHook(intentRequest)
   */
-module.exports = function(intentRequest, redirectedFromDialogs = false, callback) {
+module.exports = function(intentRequest, callback) {
 
-  // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
-  if(!redirectedFromDialogs) {
-    console.log(`In ${constants.FULFILL_CODE_HOOK} FOR ${constants.CHANGE_INFO_INTENT}`);
+  var infoType = getValidInformationType(intentRequest.currentIntent.slots.informationType);
+  var fulfillmentResult = fulfillChangeInfo(infoType);
 
-    var informationType = intentRequest.currentIntent.slots.informationType;
-    console.log(`${constants.INFORMATION_TYPE_VAL} ${informationType}`);
-
-    var fulfillmentResult = fulfillChangeInfo(informationType);
-
-    callback(lexResponses.close(
-      intentRequest.sessionAttributes,
-      fulfillmentResult.fulfillmentState,
-      fulfillmentResult.message
-      )
-    );
-  }
-
-  // this call to handleFulfillmentCodeHook came from the handler for dialog code hook,
-  // meaning the user did not specify a slot type
-  else {
-    console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
-
-    var informationType = `${constants.PAYMENT_PLAN_SLOT} or ${constants.DUE_DATE_SLOT}`;
-    var message = constants.CHANGE_INFO_BOT_RESPONSE.replace('{0}', constants.INFORMATION_SUCH_AS).replace('{1}', informationType);
-    var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
-
-    callback(lexResponses.close(
-      intentRequest.sessionAttributes,
-      fulfillmentResult.fulfillmentState,
-      fulfillmentResult.message
-      )
-    );
-
-  }
-
+  callback (lexResponses.close(
+    intentRequest.sessionAttributes,
+    fulfillmentResult.fulfillmentState,
+    fulfillmentResult.message
+    )
+  );
 }

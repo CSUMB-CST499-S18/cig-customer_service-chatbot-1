@@ -25,6 +25,6 @@ module.exports = function(intentRequest, callback) {
 
     // source of lambda invokation of Fulfillment Code Hook
     if(source === constants.FULFILL_CODE_HOOK) {
-        return handleFulfillmentCodeHook(intentRequest, false, callback);
+        return handleFulfillmentCodeHook(intentRequest, callback);
     }
 }
