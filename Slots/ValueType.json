@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "ValueType",
+    "version": "1",
+    "enumerationValues": [
+      {
+        "value": "increase",
+        "synonyms": [
+          "higher",
+          "up",
+          "more",
+          "payment increase",
+          "bill increase"
+        ]
+      },
+      {
+        "value": "decrease",
+        "synonyms": [
+          "lower",
+          "down",
+          "less",
+          "payment decrease",
+          "bill decrease"
+        ]
+      }
+    ],
+    "valueSelectionStrategy": "TOP_RESOLUTION"
+  }
+}
