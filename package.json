@@ -1,0 +1,26 @@
+{
+  "name": "cig_chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "export AWS_REGION=us-east-1 && jest",
+    "watch": "export AWS_REGION=us-east-1 && jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSUMB-CST499-S18/cig-customer_service-chatbot-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSUMB-CST499-S18/cig-customer_service-chatbot-1/issues"
+  },
+  "homepage": "https://github.com/CSUMB-CST499-S18/cig-customer_service-chatbot-1#readme",
+  "devDependencies": {
+    "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "chai": "^4.1.2"
+  }
+}
