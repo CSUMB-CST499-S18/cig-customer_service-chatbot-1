@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "policySyn",
+    "version": "1",
+    "enumerationValues": [
+      {
+        "value": "policy",
+        "synonyms": [
+          "policies"
+        ]
+      }
+    ],
+    "valueSelectionStrategy": "TOP_RESOLUTION"
+  }
+}
