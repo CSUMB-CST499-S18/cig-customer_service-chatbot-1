@@ -16,7 +16,6 @@ module.exports = {
     COMPANY_CLIENT_SERVICES_NUM: "(877) 200-4220",
     COMPANY_MONTEREY_NUM: "(831) 233-5500",
 
-
     /**
      *
      *
@@ -59,21 +58,41 @@ module.exports = {
     //
     //
     GREETING_INTENT: "Greeting",
+    GOOD_MORNING: "Good morning!",
+    GOOD_AFTERNOON: "Good afternoon!",
+    GOOD_EVENING: "Good evening!",
+    HELLO: "Hello!",
+    HI_THERE: "Hi there!",
+    GREETINGS: "Greetings!",
+    get BOT_INTRO() {
+      return(`I am the ${this.COMPANY_NAME} chatbot, and I am here to help.`);
+    },
     get GREET_BOT_RESPONSE() {
-
+      // replace {0} with GOOD_MORNING,etc. depending on time of day
+      // replace {1} with BOT_INTRO if the user greeted the bot
+      return(`{0} {1} Please let me know what you need help with.`);
     },
     get GREET_BOT_RESPONSE2() {
-
+      // replace {0} with GOOD_MORNING,etc. depending on time of day
+      // replace {1} with BOT_INTRO if the user greeted the bot
+      return(`{0} {1} How may I be of assistance to you?`);
     },
     get GREET_BOT_RESPONSE3() {
-
+      // replace {0} with GOOD_MORNING,etc. depending on time of day
+      // replace {1} with BOT_INTRO if the user greeted the bot
+      return(`{0} {1} What can I help you with today?`);
     },
     get GREET_BOT_RESPONSE4() {
-
+      // replace {0} with GOOD_MORNING,etc. depending on time of day
+      // replace {1} with BOT_INTRO if the user greeted the bot
+      return(`{0} {1} What can I do to help you today?`);
     },
     get GREET_BOT_RESPONSE5() {
-
+      // replace {0} with GOOD_MORNING,etc. depending on time of day
+      // replace {1} with BOT_INTRO if the user greeted the bot
+      return(`{0} {1} Please let me know how I can help you today.`);
     },
+
     // ------------------------------------
     // SetupProcess intent
     // ------------------------------------
