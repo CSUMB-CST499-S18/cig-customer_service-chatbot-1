@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "PaymentType",
+    "version": "2",
+    "enumerationValues": [
+      {
+        "value": "payment",
+        "synonyms": [
+          "bill",
+          "invoice"
+        ]
+      }
+    ],
+    "valueSelectionStrategy": "TOP_RESOLUTION"
+  }
+}
