@@ -23,8 +23,8 @@ const greetCustomer = require('./Greeting_Intent/greetCustomer');
 // const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
 // const getCopy = require('./GetCopy_Intent/getCopy');
 // const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
-// const makePayment = require('./MakePayment_Intent/makePayment');
-// const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
+const makePayment = require('./MakePayment_Intent/makePayment');
+const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
 
 
 console.log(`${constants.CURRENT_FILE} ${__filename}\n${constants.CURRENT_DIR} ${__dirname}`);
@@ -50,7 +50,19 @@ module.exports = function(intentRequest, callback) {
     if(intentName === constants.GREETING_INTENT) {
         return greetCustomer(intentRequest, callback);
     }
-
+    
+    // RetrievePaymentInfo intent
+    if(intentName === constants.RETRIEVE_PAYMENT_INTENT) {
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return retrievePaymentInfo(intentRequest, callback);
+    }
+    
+    // MakePayment intent
+    if(intentName === constants.MAKE_PAYMENT_INTENT) {
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return makePayment(intentRequest, callback);
+    }
+    
     // unsupported intent
     else {
         console.log(`${constants.ERROR_INTENT} ${intentName}`);
