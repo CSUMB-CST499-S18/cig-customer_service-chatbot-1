@@ -1,7 +1,7 @@
 /**
-  * Handles DifferentPayment intent's fulfillment
-  * Author: Chanel Aquino
-  * Date: 4/1/2018
+  * Handles SetupProcess intent's fulfillment
+  * Author: Maria Loza
+  * Date: 4/10/2018
   */
 
 'use strict';
@@ -13,7 +13,7 @@ console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 
 /**
-  * builds object for fulfilling DifferentPayment intent
+  * builds object for fulfilling SetupProcess intent
   */
 function buildFulfillmentResult(fulfillmentState, messageContent) {
   console.log(`Building fulfillment result for ${constants.SETUP_PROCESS_INTENT} intent`);
@@ -54,10 +54,12 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
 
   // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
   if(!redirectedFromDialogs) {
-    console.log(`In ${constants.FULFILL_CODE_HOOK} FOR ${constants.SETUP_PROCESS_INTENT}`);
+    console.log(`In ${constants.FULFILL_CODE_HOOK} FOR ${constants.DIFFERENT_PAYMENT_INTENT}`);
     
-    var processType = intentRequest.currentIntent.slots.processType;
-    console.log(`${constants.PROCESS_TYPE_VAL} ${processType}`);
+    var payType = intentRequest.currentIntent.slots.payType;
+    var value = intentRequest.currentIntent.slots.value;
+    console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
+    console.log(`${constants.VALUE_VAL} ${value}`);
 
     var fulfillmentResult = fulfillSetup(processType);
 

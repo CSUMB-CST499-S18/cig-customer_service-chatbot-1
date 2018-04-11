@@ -10,6 +10,8 @@
 
 const constants = require('./constant-vars');
 const setupProcess = require('./SetupProcess_Intent/setupProcess');
+const differentPayment = require('./DifferentPayment_Intent/differentPayment');
+
 
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);
@@ -30,6 +32,12 @@ module.exports = function(intentRequest, callback) {
     // ChangeInformation intent
     if(intentName === constants.CHANGE_INFO_INTENT) {
         // do something
+    }
+    
+    // DifferentPayment intent
+    if(intentName === constants.DIFFERENT_PAYMENT_INTENT) {
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return differentPayment(intentRequest, callback);
     }
 
     // unsupported intent

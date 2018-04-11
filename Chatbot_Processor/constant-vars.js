@@ -60,6 +60,14 @@ module.exports = {
     CHANGE_INFO_INTENT: "ChangeInformation",
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
+    
+    // DifferentPayment intent
+    DIFFERENT_PAYMENT_LAMBDA_DIR: "~/DifferentPayment_Intent",
+    DIFFERENT_PAYMENT_INTENT: "DifferentPayment",
+    PAY_TYPE_SLOT: "payType",
+    PAY_TYPE_VAL: "payType Value:",
+    VALUE_SLOT: "value",
+    VALUE_VAL: "value Value:",
 
     /**
      * debugging constants
