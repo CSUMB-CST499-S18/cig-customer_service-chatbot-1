@@ -31,7 +31,7 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
   * fulfills SetupProcess intent
   */
 function fulfillSetup(processType) {
-  console.log(`Fulfilling ${constants.SETUP_PROCESS_INTENT} intent\n
+  console.log(`Fulfilling ${constants.DIFFERENT_PAYMENT_INTENT} intent\n
     processType: ${processType}`);
   
   if(processType === `${constants.AUTO_PAY_SLOT} or ${constants.PAPERLESS_SLOT}`) {

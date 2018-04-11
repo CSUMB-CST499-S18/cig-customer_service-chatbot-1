@@ -53,7 +53,7 @@ function validateDifferentPayment(diffSlot) {
         if (diffSlot == 'payment') {
             return buildvalidateDifferentPayment(true, constants.PAY_TYPE_SLOT, null);
         } else {
-            return buildvalidateDifferentPayment(false, constants.VALUE_SLOT, null);
+            return buildvalidateDifferentPayment(true, constants.VALUE_SLOT, null);
         }
     }
 
@@ -70,6 +70,7 @@ module.exports = function(intentRequest, callback) {
   var payType = intentRequest.currentIntent.slots.payType;
   var value = intentRequest.currentIntent.slots.value;
   console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
+  console.log(`${constants.VALUE_VAL} ${value}`);
 
   const slots = intentRequest.currentIntent.slots;
   const validatePaymentType = validateDifferentPayment(payType);
@@ -106,9 +107,10 @@ module.exports = function(intentRequest, callback) {
     console.log(`Validation is valid: ${validatePaymentType.isValid == true}`);
     
     // user did not provide procesType slot; fulfill the intent
-    if(validatePaymentType.violatedSlot === constants.PAY_TYPE_SLOT) {
+    if (validatePaymentType.violatedSlot === constants.PAY_TYPE_SLOT && validateDifferentValue.violatedSlot === constants.VALUE_SLOT) {
       console.log(`${constants.CURRENT_FILE} ${__filename}, with a valid result but not processType`);
-      console.log(`Violated slot: ${validatePaymentType.violatedSlot}`);
+      console.log(`Violated slot - payType: ${validatePaymentType.violatedSlot}`);
+      console.log(`Violated slot - value: ${validateDifferentValue.violatedSlot}`);
       return handleFulfillmentCodeHook(intentRequest, true, callback);
     }
 
