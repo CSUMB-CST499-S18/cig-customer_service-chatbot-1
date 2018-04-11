@@ -11,6 +11,7 @@
 const constants = require('../constant-vars');
 const handleDialogCodeHook = require('./manageDialogs');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
+const lexResponses = require('../lexResponses');
 
 module.exports = function(intentRequest, callback) {
 
@@ -25,6 +26,6 @@ module.exports = function(intentRequest, callback) {
 
     // source of lambda invokation of Fulfillment Code Hook
     if(source === constants.FULFILL_CODE_HOOK) {
-        return handleFulfillmentCodeHook(intentRequest, false, callback);
+        return handleFulfillmentCodeHook(intentRequest, callback);
     }
 }
