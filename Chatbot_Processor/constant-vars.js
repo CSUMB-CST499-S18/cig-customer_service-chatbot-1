@@ -218,77 +218,53 @@ module.exports = {
       return (`${this.PAY_TYPE_SLOT}`);
     },
     get SETUP_BOT_RESPONSE() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
+        // replace {0} with PAYMENT_VALUE if user did not provide payType slot;
         return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss the change in {0}.`);
     },
     
     get SETUP_BOT_RESPONSE() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
-        return (`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+        return (`You will have to contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} for further information.`);
     },
     get SETUP_BOT_RESPONSE2() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
         return (`You can contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
     get SETUP_BOT_RESPONSE3() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
         return (`Contacting customer service at ${this.COMPANY_CLIENT_SERVICES_NUM} would be your next step for more information.`);
     },
     get SETUP_BOT_RESPONSE4() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
         return (`Unfortunately, I cannot help answering your question. Contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
     get SETUP_BOT_RESPONSE5() {
-        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
-        // replace {1} with processType provided by user or by default processTypes if user did not provide
-        // replace {2} with correct phone number of agent
-        /**
-          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
-          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
-          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
-          *     "You can set up auto pay at www.ciginsurance.com..."
-          */
         return (`I cannot determine the reasoning behind the change, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    
+    
+    // ------------------------------------
+    // GetNoticeInfo intent
+    // ------------------------------------
+    //
+    //
+    GET_NOTICE_INFO_LAMBDA_DIR: "~/GetNoticeInfo_Intent",
+    GET_NOTICE_INFO_INTENT: "GetNoticeInfo",
+    NOTICE_VALUE: "notice",
+    get SETUP_BOT_RESPONSE() {
+        return (`I am unable to gather all the appropriate information. Contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    
+    get SETUP_BOT_RESPONSE() {
+        return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss this ${this.NOTICE_VALUE}.`);
+    },
+    get SETUP_BOT_RESPONSE2() {
+        return (`You will need to contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE3() {
+        return (`Contacting customer service at ${this.COMPANY_CLIENT_SERVICES_NUM} would be your next step for more information about this ${this.NOTICE_VALUE}.`);
+    },
+    get SETUP_BOT_RESPONSE4() {
+        return (`Unfortunately, I cannot determine the ${this.NOTICE_VALUE}. Contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE5() {
+        return (`I cannot determine the reasoning behind the ${this.NOTICE_VALUE}, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
     
     

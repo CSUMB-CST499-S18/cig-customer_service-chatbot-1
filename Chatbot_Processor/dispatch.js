@@ -19,9 +19,9 @@ const constants = require('./constant-vars');
 const setupProcess = require('./SetupProcess_Intent/setupProcess');
 const changeInformation = require('./ChangeInformation_Intent/changeInformation');
 const greetCustomer = require('./Greeting_Intent/greetCustomer');
-// const differentPayment = require('./DifferentPayment_Intent/differentPayment');
+const differentPayment = require('./DifferentPayment_Intent/differentPayment');
 // const getFeeInformation = require('./GetFeeInformation_Intent/getFeeInformation');
-// const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
+const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
 // const getCopy = require('./GetCopy_Intent/getCopy');
 // const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
 // const makePayment = require('./MakePayment_Intent/makePayment');
@@ -56,6 +56,12 @@ module.exports = function(intentRequest, callback) {
     if(intentName === constants.DIFFERENT_PAYMENT_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
         return differentPayment(intentRequest, callback);
+    }
+    
+    // GetNoticeInfo intent
+    if(intentName === constants.GET_NOTICE_INFO_INTENT) {
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return getNoticeInfo(intentRequest, callback);
     }
 
     // unsupported intent
