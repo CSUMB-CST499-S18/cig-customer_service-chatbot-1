@@ -8,6 +8,7 @@
 
 const constants = require('../constant-vars');
 const lexResponses = require('../lexResponses');
+const getBotResponse = require('./getBotResponse');
 
 console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
@@ -28,22 +29,18 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
 }
 
 /**
-  * fulfills SetupProcess intent
+  * fulfills DifferentPayment intent
   */
-function fulfillSetup(processType) {
+function fulfillSetup(payType) {
   console.log(`Fulfilling ${constants.DIFFERENT_PAYMENT_INTENT} intent\n
-    processType: ${processType}`);
+    payType: ${payType}`);
   
-  if(processType === `${constants.AUTO_PAY_SLOT} or ${constants.PAPERLESS_SLOT}`) {
-    return buildFulfillmentResult(
-      constants.FULFILLED_STATUS,
-      constants.SETUP_BOT_RESPONSE.replace('{0}', constants.PROCESSES_LIKE).replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM)
-    );
-  }
+  const bot_response = getBotResponse(payType);
+  console.log(`bot response: ${bot_response}`);
   
   return buildFulfillmentResult(
     constants.FULFILLED_STATUS,
-    constants.SETUP_BOT_RESPONSE.replace('{0}', "").replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM)
+   bot_response
   );
 }
 
@@ -59,9 +56,9 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
     var payType = intentRequest.currentIntent.slots.payType;
     var value = intentRequest.currentIntent.slots.value;
     console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
-    console.log(`${constants.VALUE_VAL} ${value}`);
+    // console.log(`${constants.VALUE_VAL} ${value}`);
 
-    var fulfillmentResult = fulfillSetup(processType);
+    var fulfillmentResult = fulfillSetup(payType);
 
     callback(lexResponses.close(
       intentRequest.sessionAttributes,
@@ -76,8 +73,8 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
   else {
     console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
     
-    var processType = `${constants.AUTO_PAY_SLOT} or ${constants.PAPERLESS_SLOT}`;
-    var message = constants.SETUP_BOT_RESPONSE.replace('{0}', constants.PROCESSES_LIKE).replace('{1}', processType).replace('{2}', constants.COMPANY_MONTEREY_NUM);
+    var payType = `${constants.PAYMENT_VALUEOT}`;
+    var message = constants.SETUP_BOT_RESPONSE.replace('{0}', payType)
     var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
     
     callback(lexResponses.close(

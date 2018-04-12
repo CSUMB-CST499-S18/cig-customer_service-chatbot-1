@@ -199,4 +199,97 @@ module.exports = {
       // replace {1} with informationType provided by user or by default informationTypes if user did not provide
       return(`We'd be glad to help you make changes to {0} your {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to get this started.`);
     },
+    
+    
+    
+    // ------------------------------------
+    // DifferentPayment intent
+    // ------------------------------------
+    //
+    //
+    DIFFERENT_PAYMENT_LAMBDA_DIR: "~/DifferentPayment_Intent",
+    DIFFERENT_PAYMENT_INTENT: "DifferentPayment",
+    PAY_TYPE_SLOT: "payType",
+    PAY_TYPE_VAL: "payType Value:",
+    VALUE_SLOT: "value",
+    VALUE_VAL: "value Value:",
+    PAYMENT_VALUE: "payment",
+    get DEFAULT_PAY_TYPE() {
+      return (`${this.PAY_TYPE_SLOT}`);
+    },
+    get SETUP_BOT_RESPONSE() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss the change in {0}.`);
+    },
+    
+    get SETUP_BOT_RESPONSE() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE2() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`You can contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE3() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`Contacting customer service at ${this.COMPANY_CLIENT_SERVICES_NUM} would be your next step for more information.`);
+    },
+    get SETUP_BOT_RESPONSE4() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`Unfortunately, I cannot help answering your question. Contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    get SETUP_BOT_RESPONSE5() {
+        // replace {0} with PROCESSES_LIKE if user did not provide processType slot; else replace it with an empty string
+        // replace {1} with processType provided by user or by default processTypes if user did not provide
+        // replace {2} with correct phone number of agent
+        /**
+          * For example, if the user did not provide a processType, then SETUP_BOT_RESPONSE will be:
+          *     "You can set up processes like auto pay or paperless billing at www.ciginsurance.com...".
+          * If the user DID provide a processType (e.g., 'auto'), then SETUP_BOT_RESPONSE will be:
+          *     "You can set up auto pay at www.ciginsurance.com..."
+          */
+        return (`I cannot determine the reasoning behind the change, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    
+    
 };
