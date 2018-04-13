@@ -1,5 +1,5 @@
 /**
-  * Handles GetCopy intent's fulfillment
+  * Handles GetPolicyInfo intent's fulfillment
   * Author: Maria Loza
   * Date: 4/12/2018
   */
@@ -15,10 +15,10 @@ console.log(`${constants.CURRENT_FILE} ${__filename}\n
 
 
 /**
-  * builds object for fulfilling GetCopy intent
+  * builds object for fulfilling GetPolicyInfo intent
   */
 function buildFulfillmentResult(fulfillmentState, messageContent) {
-  console.log(`Building fulfillment result for ${constants.GET_COPY_INTENT} intent`);
+  console.log(`Building fulfillment result for ${constants.GET_POLICY_INFO_INTENT} intent`);
 
   return {
     fulfillmentState,
@@ -32,13 +32,13 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
 
 
 /**
-  * fulfills GetCopy intent
+  * fulfills GetPolicyInfo intent
   */
-function fulfillCopy(payType) {
-  console.log(`Fulfilling ${constants.GET_COPY_INTENT} intent\n
-    payType: ${payType}`);
+function fulfillPolicy(polSyn) {
+  console.log(`Fulfilling ${constants.GET_POLICY_INFO_INTENT} intent\n
+    polSyn: ${polSyn}`);
 
-  const bot_response = getBotResponse(payType);
+  const bot_response = getBotResponse(polSyn);
   console.log(`bot response: ${bot_response}`);
 
   return buildFulfillmentResult(
@@ -48,15 +48,15 @@ function fulfillCopy(payType) {
 }
 
 /**
- * @param payType
+ * @param polSyn
  *    type of information that user wants to change
  * @return
- *    if payType is NULL (i.e., user did not provide one), return default info type
- *    else, return payType
+ *    if polSyn is NULL (i.e., user did not provide one), return default info type
+ *    else, return polSyn
  */
-function getValidInformationType(payType) {
-  if(!payType) return constants.DEFAULT_PAY_TYPE;
-  return payType;
+function getValidInformationType(polSyn) {
+  if(!polSyn) return constants.DEFAULT_POL_SYN_TYPE;
+  return polSyn;
 }
 
 /**
@@ -64,8 +64,8 @@ function getValidInformationType(payType) {
   */
 module.exports = function(intentRequest, callback) {
 
-  var payType = getValidInformationType(intentRequest.currentIntent.slots.payType);
-  var fulfillmentResult = fulfillCopy(payType);
+  var polSyn = getValidInformationType(intentRequest.currentIntent.slots.polSyn);
+  var fulfillmentResult = fulfillPolicy(polSyn);
 
   callback (lexResponses.close(
     intentRequest.sessionAttributes,

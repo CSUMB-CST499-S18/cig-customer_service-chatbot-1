@@ -31,7 +31,7 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
 /**
   * fulfills DifferentPayment intent
   */
-function fulfillSetup(payType) {
+function fulfillDifferent(payType) {
   console.log(`Fulfilling ${constants.DIFFERENT_PAYMENT_INTENT} intent\n
     payType: ${payType}`);
   
@@ -47,7 +47,7 @@ function fulfillSetup(payType) {
 /**
   * handleFulfillmentCodeHook(intentRequest)
   */
-module.exports = function(intentRequest, redirectedFromDialogs = false, callback) {
+module.exports = function(intentRequest, callback) {
 
   // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
   if(!redirectedFromDialogs) {
@@ -58,7 +58,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
     console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
     // console.log(`${constants.VALUE_VAL} ${value}`);
 
-    var fulfillmentResult = fulfillSetup(payType);
+    var fulfillmentResult = fulfillDifferent(payType);
 
     callback(lexResponses.close(
       intentRequest.sessionAttributes,
@@ -73,7 +73,7 @@ module.exports = function(intentRequest, redirectedFromDialogs = false, callback
   else {
     console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
     
-    var payType = `${constants.PAYMENT_VALUEOT}`;
+    var payType = `${constants.PAYMENT_VALUE}`;
     var message = constants.SETUP_BOT_RESPONSE.replace('{0}', payType)
     var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
     

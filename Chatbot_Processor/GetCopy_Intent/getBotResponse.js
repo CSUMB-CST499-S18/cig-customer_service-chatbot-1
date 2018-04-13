@@ -13,15 +13,15 @@ module.exports = function(payType) {
 
   switch(random_response_num) {
     case 1:
-      return constants.CHANGE_INFO_BOT_RESPONSE;
+      return constants.GET_COPY_RESPONSE;
     case 2:
-      return constants.CHANGE_INFO_BOT_RESPONSE2;
+      return constants.GET_COPY_RESPONSE2;
     case 3:
-      return constants.CHANGE_INFO_BOT_RESPONSE3;
+      return constants.GET_COPY_RESPONSE3;
     case 4:
-      return constants.CHANGE_INFO_BOT_RESPONSE4;
+      return constants.GET_COPY_RESPONSE4;
     case 5:
-      return constants.CHANGE_INFO_BOT_RESPONSE5;
+      return constants.GET_COPY_RESPONSE5;
     default:
       break;
   }

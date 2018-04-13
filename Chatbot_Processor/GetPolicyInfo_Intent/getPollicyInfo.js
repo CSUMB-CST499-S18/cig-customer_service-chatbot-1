@@ -1,5 +1,5 @@
 /**
- * This code executes the DifferentPayment intent in the CIG_Chatbot bot. This intent can be invoked
+ * This code executes the GetPolicyInfo intent in the CIG_Chatbot bot. This intent can be invoked
  * in one of two ways: 1) as a lambda initialization and validation (i.e., code hook), or 2) as a fulfillment.
  * Author: Maria Loza
  * Date: 4/10/2018

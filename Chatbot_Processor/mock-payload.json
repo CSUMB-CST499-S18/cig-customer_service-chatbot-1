@@ -1,0 +1,364 @@
+module.exports = {
+  "login" : {
+    "username": "CIGUser1",
+    "password": "Welcome123!",
+    "authToken": null
+  },
+  "profile" : {
+    "firstName" : "John",
+    "lastName" : "Dough",
+    "emailAddress": "mbeatty@ciginsurance.com"
+  },
+  "policies" :{
+    "1-HOC-1-1394462794":{
+      "accountNumber": "0-CIG-0-1123506579",
+      "address1" : "2300 Garden Road",
+      "address2" : "",
+      "city" : "Monterey",
+      "emailAddress" : "mbeatty@ciginsurance.com",
+      "enhancedCoverages" : "",
+      "evePhoneNumber" : "831-233-5363",
+      "evePhoneNumberExt" : "",
+      "effectiveDate" : "04/08/2018",
+      "expirationDate": "04/08/2019",
+      "initialInception": "04/08/2018",
+      "termNumber": 1,
+      "closureStatus": "Open",
+      "Require Final Audit": "No",
+      "Cancellation Status:": "Open",
+      "OverridingInvoiceStream": "Every Week",
+      "namedInsured": "John Dough",
+      "unit": "1",
+      "agent":{
+        "address1": "2301 Garden Road",
+        "address2": "",
+        "city": "Monterey",
+        "licenseNumber": "0656237",
+        "name": "CIG Agent Inc.",
+        "phone": "(831) 233-5500",
+        "state": "CA",
+        "zipCode": "93940"
+      },
+      "county": "Monterey",
+      "state": "CA",
+      "zipCode": "93940",
+      "territory": "111",
+      "band": "2",
+      "basic coverage":{
+        "form": "3",
+        "construction":{
+          "type": "Frame",
+          "year": "2001",
+          "quality": "Good"
+        },
+        "roofType": "Tile",
+        "squareFootage":{
+          "dwelling": "1200",
+          "ground floor": "1200"
+        },
+        "numberOfUnits": "1",
+        "seniorResidence": "No",
+        "chargeType": "Credit",
+        "swimmingPool":{
+          "pool":"Unknown"
+        },
+        "theftDed":"No",
+        "waterDed":"Not Applicable",
+        "inflationGuard":"Yes",
+        "publicProtectionClassification(PPC)":{
+          "PPC-ISO": "",
+          "PPC-Override": "",
+          "PPC-Rated": 5
+        },
+        "fireStationInformation":{
+          "nameOfRespondingFirestation": "Monterey",
+          "milesToRespondingFirestation": "5 Miles or Less",
+          "feetToRecognizedWaterSource": "1000 Feet or Less",
+          "stationType": ""
+        },
+        "basicCoverage":{
+          "dwelling": {
+            "limit": "$450,000.00",
+            "premium": "$1,073.00"
+          },
+          "otherStructures":{
+            "limit":"$45,000.00",
+            "premium": ""
+          },
+          "personalProperty":{
+            "limit":"$225,000",
+            "premium":"$0.00"
+          },
+          "lossOfUse":{
+            "limit":"$90,000",
+            "premium":""
+          },
+          "personalLiability":{
+            "limit":"1,000,000.00",
+            "premium":"$62.00"
+          },
+          "medicalPayments":{
+            "limit": "$5,000.00",
+            "premium": ""
+          },
+          "policyDeductible": "$500.00",
+          "basicPremium": "$1,135.00",
+          "workersCompensation": "",
+          "optionalCoverages": "$0.00",
+          "creditsOrSurcharge":"Included",
+          "openAttachments": "$0.00",
+          "totalPremium": "$1,135.00"
+        }
+      },
+      "optionalCoverages":{
+        "CAL PAK": {
+          "premium": "$0.00"
+        },
+        "contentsReplacementCost": {
+          "premium": ""
+        },
+        "dwellingReplacementCost":{
+          "premium": "",
+          "earthQuake":"15%"
+        },
+        "ordinanceOrLaw":{
+          "premium": ""
+        },
+        "CAL-ADD":{
+          "premium": ""
+        }
+      },
+      "specialtyProgram":{
+        "programName": "Not Applicable",
+        "endorsement": "No",
+        "premium": "$0.00"
+      }
+    },
+    "1-PAC-1-200711458641":{
+      "accountNumber": "0-CIG-0-1123506579",
+      "address1" : "2300 Garden Road",
+      "address2" : "",
+      "city" : "Monterey",
+      "claimsList" : [
+          {
+            "claimNumber" : "M-14150-15163721",
+            "claimStatus" : "Closed",
+            "dateOfLoss" : "10/06/2017",
+            "id": "0"
+          }
+      ],
+      "companyAddress" : "P.O. Box 2093    , Monterey CA 93942",
+      "companyName" : "California Capital Insurance Company",
+      "dayPhoneNumber" : "",
+      "dayPhoneNumberExt"  : "",
+      "effectiveDate" : "12/04/2017",
+      "emailAddress" : "mbeatty@ciginsurance.com",
+      "enhancedCoverages" : "",
+      "evePhoneNumber" : "831-233-5363",
+      "evePhoneNumberExt" : "",
+      "expirationDate": "06/04/2018",
+      "firstName" : "John",
+      "insuredSince" : "2017",
+      "isEnrolledInEasyPay" : "false",
+      "isQualifyFullAutoUnlisted" : "true",
+      "isQualifyGlassClaimUnlisted" : "true",
+      "lastName" : "Dough",
+      "lineOfBusiness" : "Personal Automobile",
+      "middleInitial" : "",
+      "mobilePhoneNumber" : "",
+      "NAICCode" : "135444",
+      "occupation" : "Employed",
+      "plainFullAutoDeductibleUnlisted" : "",
+      "plainGlassDeductibleUnlisted" : "",
+      "policyDiscounts" : "",
+      "policyGenericCoverages" :[
+        {
+          "deductible" : "",
+          "label" : "Bodily Injury Liability",
+          "limitsDed" : "$50,000/$100,000",
+          "premium" : "",
+          "refCode": "",
+          "termUnit": "6"
+        },
+        {
+          "deductible": "",
+          "label": "Property Damage Liability",
+          "limitsDed": "$50,000",
+          "premium": "",
+          "refCode": "",
+          "termUnit": "6"
+        },
+        {
+          "deductible": "",
+          "label": "Medical Payments",
+          "limitsDed": "$5,000",
+          "premium": "",
+          "refCode": "",
+          "termUnit": "6"
+        },
+        {
+          "deductible": "",
+          "label": "Uninsured Motorists Bodily Injury",
+          "limitsDed": "$50,000/$100,000",
+          "premium": "",
+          "refCode": "",
+          "termUnit": "6"
+        }
+      ],
+      "policyNumber": "1-PAC-1-200711458641", 
+      "state": "CA",
+      "suffix": "",
+      "termMonths": "6",
+      "totalTermPremium": "$942",
+      "visualFullAutoDeductibleUnlisted": "",
+      "visualGlassDeductibleUnlisted": "",
+      "zipCode": "93940",
+      "zipCode4": "",
+      "agent":{
+        "address1": "2301 Garden Road",
+        "address2": "",
+        "city": "Monterey",
+        "licenseNumber": "0656237",
+        "name": "CIG Agent Inc.",
+        "phone": "(831) 233-5500",
+        "state": "CA",
+        "zipCode": "93940"
+      },
+      "drivers":[
+        {
+          "birthDate": "02/07/1992",
+          "discounts" : [
+            {
+            "discount": "California Good Driver Discount",
+            "orderID": "5"
+            }
+          ],
+          "driverStatus": "Active",
+          "excludedVins": "",
+          "firstName": "John",
+          "gender": "Male",
+          "id": "80527654",
+          "lastName": "Dough",
+          "licenseNumber": "F74618447",
+          "name": "John  Dough",
+          "primary": "false"
+        }
+      ],
+      "idCardForm": "CA01",
+      "vehicles": [
+        {
+          "addlInsured": "",
+          "address1": "2300 Garden Road",
+          "adderss2": "",
+          "city": "Monterey",
+          "coverageState": "",
+          "discounts": [
+            {
+              "discount": "Air Bag Discount",
+              "orderId": "2"
+            }
+          ],
+          "effectiveDate": "",
+          "expirationDate": "",
+          "hasAutoCard100": "false",
+          "hasIdCard": "true",
+          "id": "73147453",
+          "isQualifyFullAutoClaim": "",
+          "isQualifyGlassClaim": "",
+          "leinholder": "",
+          "loanNumber": "",
+          "lossPayee": "",
+          "make": "HOND",
+          "model": "CIVIC EX",
+          "plainFullAutoDeductible": "",
+          "plainGlassDeductible": "",
+          "state": "CA",
+          "use": "",
+          "vehicleGenericCoverages":[
+            {
+              "deductible": "",
+              "label": "Other than Collision",
+              "limitsDed": "$500 deductible",
+              "premium": "",
+              "refCode": "",
+              "termUnit": ""
+            },
+            {
+              "deductible": "",
+              "label": "Collision",
+              "limitsDed": "$500 deductible",
+              "premium": "",
+              "refCode": "",
+              "termUnit": ""
+            },
+            {
+              "deductible": "",
+              "label": "Transportation Expense",
+              "limitsDed": "No",
+              "premium": "",
+              "refCode": "",
+              "termUnit": ""
+            }
+          ],
+          "vehicleNo": "0",
+          "vin": "1LGJA16856M053210",
+          "visualFullAutoDeductible": "",
+          "visualGlassDeductible": "",
+          "year": "2006",
+          "zipCode": "93940"
+        }
+      ]
+    }
+  },
+  "billing" : {
+    "accounts":{
+      "0-CIG-0-1123506579":{
+        "associatedPolicies":[
+            "1-PAC-1-200711458641",
+            "1-HOC-1-1394462794"
+        ],
+        "billingSummary":{
+          "accountBalance":"1,307.00 usd",
+          "accountName": "Dough, John",
+          "bcAccountPublicID": "bc_prod:4645638987664",
+          "billingMethod": "DirectBill",
+          "doNotPostPayment": "false",
+          "dueDate": "2018-04-04T00:00:00-08:00",
+          "hasEFT": "true",
+          "lastBillDate": "2018-03-15T00:00:00-08:00",
+          "legalName": "Dough, John",
+          "minimumDue": "190.00 usd",
+          "nextBillDate": "2018-04-15T00:00:00-08:00",
+          "pastDue": "40.00 usd",
+          "paymentPlanName": "6-pay - 600",
+          "policyHolderAccountNumber": "0-CIG-0-1123506579",
+          "policyPayerName": "Dough, John",
+          "primaryAccountHolderAddress": {
+            "addressLine1": "2300 Garden Road",
+            "city": "Monterey",
+            "imbBarcode": "93940",
+            "state": "CA",
+            "zipCode": "93940"
+          },
+          "primaryAccountHolderAddressString": "2300 Garden Road, Monterey, CA 93940",
+          "primaryAccountHolderName": "Dough, John",
+          "primaryAccountHolderPhone": "831-233-5363"
+        },
+        "eft":{
+          "hasEFT": true,
+          "accountNumber": "0-CIG-0-1123506579",
+          "bankAccountNumber": "123456789",
+          "bankAccountNumberMasked": "*****6789",
+          "routingNumber": "987654321",
+          "routingNumberMasked": "*****4321"
+        }
+      }
+    },
+    "payment" : {
+      "outageStatus": {
+        "checkPaymentOutage": false,
+        "creditCardPaymentOutage": false
+      }
+    }
+}
+}

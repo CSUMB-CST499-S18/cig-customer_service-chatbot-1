@@ -111,7 +111,7 @@ module.exports = function(intentRequest, callback) {
       console.log(`${constants.CURRENT_FILE} ${__filename}, with a valid result but not processType`);
       console.log(`Violated slot - payType: ${validatePaymentType.violatedSlot}`);
       console.log(`Violated slot - value: ${validateDifferentValue.violatedSlot}`);
-      return handleFulfillmentCodeHook(intentRequest, true, callback);
+      return handleFulfillmentCodeHook(intentRequest, callback);
     }
 
     // user provided slot; delegate the intent

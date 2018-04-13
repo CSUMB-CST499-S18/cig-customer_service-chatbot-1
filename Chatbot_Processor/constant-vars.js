@@ -222,20 +222,20 @@ module.exports = {
     DIFFERENT_PAYMENT_INTENT: "DifferentPayment",
     VALUE_SLOT: "value",
     VALUE_VAL: "value Value:",
-    get SETUP_BOT_RESPONSE() {
+    get DIFFERENT_PAYMENT_RESPONSE() {
         // replace {0} with PAYMENT_VALUE if user did not provide payType slot;
         return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss the change in {0}.`);
     },
-    get SETUP_BOT_RESPONSE2() {
+    get DIFFERENT_PAYMENT_RESPONSE2() {
         return (`You can contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    get SETUP_BOT_RESPONSE3() {
+    get DIFFERENT_PAYMENT_RESPONSE3() {
         return (`Contacting customer service at ${this.COMPANY_CLIENT_SERVICES_NUM} would be your next step for more information.`);
     },
-    get SETUP_BOT_RESPONSE4() {
+    get DIFFERENT_PAYMENT_RESPONSE4() {
         return (`Unfortunately, I cannot help answering your question. Contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    get SETUP_BOT_RESPONSE5() {
+    get DIFFERENT_PAYMENT_RESPONSE5() {
         return (`I cannot determine the reasoning behind the change, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
     
@@ -248,44 +248,72 @@ module.exports = {
     GET_NOTICE_INFO_LAMBDA_DIR: "~/GetNoticeInfo_Intent",
     GET_NOTICE_INFO_INTENT: "GetNoticeInfo",
     NOTICE_VALUE: "notice",
-    get SETUP_BOT_RESPONSE() {
+    get GET_NOTICE_INFO_RESPONSE() {
         return (`I am unable to gather all the appropriate information. Contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    get SETUP_BOT_RESPONSE2() {
+    get GET_NOTICE_INFO_RESPONSE2() {
         return (`You will need to contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    get SETUP_BOT_RESPONSE3() {
+    get GET_NOTICE_INFO_RESPONSE3() {
         return (`Contacting customer service at ${this.COMPANY_CLIENT_SERVICES_NUM} would be your next step for more information about this ${this.NOTICE_VALUE}.`);
     },
-    get SETUP_BOT_RESPONSE4() {
+    get GET_NOTICE_INFO_RESPONSE4() {
         return (`Unfortunately, I cannot determine the ${this.NOTICE_VALUE}. Contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    get SETUP_BOT_RESPONSE5() {
+    get GET_NOTICE_INFO_RESPONSE5() {
         return (`I cannot determine the reasoning behind the ${this.NOTICE_VALUE}, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
     
     // ------------------------------------
     // GetCopy intent
     // ------------------------------------
-    //ou can get a copy of your bill online through www.ciginsurance.com
+    //
     //
     GET_COPY_LAMBDA_DIR: "~/GetCopy_Intent",
     GET_COPY_INTENT: "GetCopy",
     PAYMENT_VALUE: "notice",
-    get SETUP_BOT_RESPONSE() {
+    get GET_COPY_RESPONSE() {
         return (`You can get a copy of your bill online through ${this.COMPANY_WEBSITE}.`);
     },
-    get SETUP_BOT_RESPONSE2() {
+    get GET_COPY_RESPONSE2() {
         return (`Please, visit our website at ${this.COMPANY_WEBSITE} to get a copy.`);
     },
-    get SETUP_BOT_RESPONSE3() {
+    get GET_COPY_RESPONSE3() {
         return (`I am unable to retrieve your copy, but you can visit ${this.COMPANY_WEBSITE} to view it.`);
     },
-    get SETUP_BOT_RESPONSE4() {
+    get GET_COPY_RESPONSE4() {
         return (`Unfortunately, I cannot find your copy. It can be found at ${this.COMPANY_WEBSITE}.`);
     },
-    get SETUP_BOT_RESPONSE5() {
+    get GET_COPY_RESPONSE5() {
         return (`Your copy is waiting for you at ${this.COMPANY_WEBSITE}.`);
+    },
+    
+    
+    // ------------------------------------
+    // GetPolicyInfo intent
+    // ------------------------------------
+    //
+    //return (`You can set up {0} {1} online at ${this.COMPANY_WEBSITE}. You may also contact your agent at {2} or contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    GET_POLICY_INFO_LAMBDA_DIR: "~/GetPolicyInfo_Intent",
+    GET_POLICY_INFO_INTENT: "GetPolicyInfo",
+    POL_SYN_SLOT: "polSyn",
+    get DEFAULT_POL_SYN_TYPE() {
+      return (`${this.POL_SYN_SLOT}`);
+    },
+    get GET_POLICY_INFO_RESPONSE() {
+        return (`You have the following: {0}.`);
+    },
+    get GET_POLICY_INFO_RESPONSE2() {
+        return (`You have {0} insurance.`);
+    },
+    get GET_POLICY_INFO_RESPONSE3() {
+        return (`You are covered for {0}.`);
+    },
+    get GET_POLICY_INFO_RESPONSE4() {
+        return (`The insurance that you have are the following: {0}.`);
+    },
+    get GET_POLICY_INFO_RESPONSE5() {
+        return (`I pulled up your information and you have {0}.`);
     },
     
     
