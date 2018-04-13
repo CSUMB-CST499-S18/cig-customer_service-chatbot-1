@@ -54,7 +54,7 @@ function fulfillCopy(payType) {
  *    if payType is NULL (i.e., user did not provide one), return default info type
  *    else, return payType
  */
-function getValidInformationType(payType) {
+function getValidPayType(payType) {
   if(!payType) return constants.DEFAULT_PAY_TYPE;
   return payType;
 }
@@ -64,7 +64,7 @@ function getValidInformationType(payType) {
   */
 module.exports = function(intentRequest, callback) {
 
-  var payType = getValidInformationType(intentRequest.currentIntent.slots.payType);
+  var payType = getValidPayType(intentRequest.currentIntent.slots.payType);
   var fulfillmentResult = fulfillCopy(payType);
 
   callback (lexResponses.close(

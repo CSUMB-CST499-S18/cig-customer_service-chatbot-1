@@ -14,13 +14,13 @@ console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 
 /**
- * builds object for validating SetupProcess intent
+ * builds object for validating DifferentPayment intent
  */
 function buildvalidateDifferentPayment(isValid, violatedSlot, messageContent) {
   console.log(`Building validation result for ${constants.DIFFERENT_PAYMENT_INTENT} intent`);
     
     if (isValid) {
-      // either the user did not specify slot for processType, so one was provided for it
+      // either the user did not specify slot for payType, so one was provided for it
       // or the user did provide a slot, therefore no error message
       if(!violatedSlot || messageContent == null) {
         return {
@@ -45,9 +45,6 @@ function validateDifferentPayment(diffSlot) {
 
     // diffSlot slot not required; user did not specify diffSlot type
     if (!diffSlot) {
-        // var errorMessage = constants.NO_PROCESS_TYPE_PROVIDED;
-        // return buildvalidateDifferentPayment(false, constants.PAY_TYPE_SLOT, errorMessage);
-
         console.log('User did not provided slot for differentpayment intent');
         // fulfill the DifferentPayment intent
         if (diffSlot == 'payment') {

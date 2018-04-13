@@ -20,13 +20,13 @@ module.exports = function(payType) {
     case 1:
       return constants.DIFFERENT_PAYMENT_RESPONSE.replace('{0}', pay);
     case 2:
-      return constants.DIFFERENT_PAYMENT_RESPONSE2.replace('{0}', pay);
+      return constants.DIFFERENT_PAYMENT_RESPONSE2;
     case 3:
-      return constants.DIFFERENT_PAYMENT_RESPONSE3.replace('{0}', pay);
+      return constants.DIFFERENT_PAYMENT_RESPONSE3;
     case 4:
-      return constants.DIFFERENT_PAYMENT_RESPONSE4.replace('{0}', pay);
+      return constants.DIFFERENT_PAYMENT_RESPONSE4;
     case 5:
-      return constants.DIFFERENT_PAYMENT_RESPONSE5.replace('{0}', pay);
+      return constants.DIFFERENT_PAYMENT_RESPONSE5;
     default:
       break;
   }

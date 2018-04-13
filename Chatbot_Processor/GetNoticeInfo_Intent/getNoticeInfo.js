@@ -9,7 +9,6 @@
 'use strict';
 
 const constants = require('../constant-vars');
-// const handleDialogCodeHook = require('./manageDialogs');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 const lexResponses = require('../lexResponses');
 

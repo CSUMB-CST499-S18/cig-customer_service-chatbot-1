@@ -1,5 +1,5 @@
 /**
-  * Handles SetupProcess intent's fulfillment
+  * Handles DifferentPayment intent's fulfillment
   * Author: Maria Loza
   * Date: 4/10/2018
   */
@@ -14,10 +14,10 @@ console.log(`${constants.CURRENT_FILE} ${__filename}`);
 console.log(`${constants.CURRENT_DIR} ${__dirname}`);
 
 /**
-  * builds object for fulfilling SetupProcess intent
+  * builds object for fulfilling DifferentPayment intent
   */
 function buildFulfillmentResult(fulfillmentState, messageContent) {
-  console.log(`Building fulfillment result for ${constants.SETUP_PROCESS_INTENT} intent`);
+  console.log(`Building fulfillment result for ${constants.DIFFERENT_PAYMENT_INTENT} intent`);
 
   return {
     fulfillmentState,
@@ -45,37 +45,26 @@ function fulfillDifferent(payType) {
 }
 
 /**
+ * @param payType
+ *    type of information that user wants to change
+ * @return
+ *    if payType is NULL (i.e., user did not provide one), return default info type
+ *    else, return payType
+ */
+function getValidPayType(payType) {
+  if(!payType) return constants.DEFAULT_PAY_TYPE;
+  return payType;
+}
+
+/**
   * handleFulfillmentCodeHook(intentRequest)
   */
 module.exports = function(intentRequest, callback) {
 
-  // this call to handleFulfillmentCodeHook did not come from the handler for dialog code hook
-  if(!redirectedFromDialogs) {
-    console.log(`In ${constants.FULFILL_CODE_HOOK} FOR ${constants.DIFFERENT_PAYMENT_INTENT}`);
-    
-    var payType = intentRequest.currentIntent.slots.payType;
-    var value = intentRequest.currentIntent.slots.value;
-    console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
-    // console.log(`${constants.VALUE_VAL} ${value}`);
-
-    var fulfillmentResult = fulfillDifferent(payType);
-
-    callback(lexResponses.close(
-      intentRequest.sessionAttributes,
-      fulfillmentResult.fulfillmentState,
-      fulfillmentResult.message
-      )
-    );
-  }
-
-  // this call to handleFulfillmentCodeHook came from the handler for dialog code hook,
-  // meaning the user did not specify a slot type
-  else {
     console.log(`In ${constants.FULFILL_CODE_HOOK} from ${constants.DIALOG_CODE_HOOK}`);
     
-    var payType = `${constants.PAYMENT_VALUE}`;
-    var message = constants.SETUP_BOT_RESPONSE.replace('{0}', payType)
-    var fulfillmentResult = buildFulfillmentResult(constants.FULFILLED_STATUS, message);
+    var payType = getValidPayType(intentRequest.currentIntent.slots.payType);
+    var fulfillmentResult = fulfillDifferent(payType);
     
     callback(lexResponses.close(
       intentRequest.sessionAttributes,
@@ -85,5 +74,3 @@ module.exports = function(intentRequest, callback) {
     );
 
   }
-
-}

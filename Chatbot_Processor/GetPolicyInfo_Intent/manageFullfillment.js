@@ -51,10 +51,10 @@ function fulfillPolicy(polSyn) {
  * @param polSyn
  *    type of information that user wants to change
  * @return
- *    if polSyn is NULL (i.e., user did not provide one), return default info type
+ *    if polSyn is NULL (i.e., user did not provide one), return default polSyn type
  *    else, return polSyn
  */
-function getValidInformationType(polSyn) {
+function getValidPolSyn(polSyn) {
   if(!polSyn) return constants.DEFAULT_POL_SYN_TYPE;
   return polSyn;
 }
@@ -64,7 +64,7 @@ function getValidInformationType(polSyn) {
   */
 module.exports = function(intentRequest, callback) {
 
-  var polSyn = getValidInformationType(intentRequest.currentIntent.slots.polSyn);
+  var polSyn = getValidPolSyn(intentRequest.currentIntent.slots.polSyn);
   var fulfillmentResult = fulfillPolicy(polSyn);
 
   callback (lexResponses.close(

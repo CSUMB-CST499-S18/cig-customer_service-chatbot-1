@@ -29,8 +29,6 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
   };
 }
 
-
-
 /**
   * fulfills GetNoticeInfo intent
   */

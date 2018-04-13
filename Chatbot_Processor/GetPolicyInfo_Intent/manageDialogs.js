@@ -20,7 +20,7 @@ function buildValidationResult(isValid, violatedSlot, messageContent) {
   console.log(`Building validation result for ${constants.GET_POLICY_INFO_INTENT} intent`);
 
     if (isValid) {
-      // either the user did not specify slot for informationType, so one was provided for it
+      // either the user did not specify slot for polSyn, so one was provided for it
       // or the user did provide a slot, therefore no error message
       if (!violatedSlot || messageContent == null) {
         return {
@@ -38,9 +38,9 @@ function buildValidationResult(isValid, violatedSlot, messageContent) {
 }
 
 /**
- * validates ChangeInformation intent
+ * validates GetPolicyInfo intent
  */
-function validateChangeInformation(polSyn) {
+function validatePolicyInformation(polSyn) {
   console.log(`Validating ${constants.GET_POLICY_INFO_INTENT} intent`);
 
     // polSyn slot not required; user did not specify information type
@@ -63,7 +63,7 @@ module.exports = function(intentRequest, callback) {
   console.log(`${constants.INFORMATION_TYPE_VAL} ${polSyn}`);
 
   const slots = intentRequest.currentIntent.slots;
-  const validationResult = validateChangeInformation(polSyn);
+  const validationResult = validatePolicyInformation(polSyn);
 
   // invalid result: prompt user for slot
   if(!validationResult.isValid) {

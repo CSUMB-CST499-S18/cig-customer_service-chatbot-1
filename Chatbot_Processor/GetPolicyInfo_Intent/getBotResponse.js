@@ -5,7 +5,7 @@ const NUM_RESPONSES = constants.DEFAULT_NUM_BOT_RESPONSES;
 
 /**
  * @param polSyn
- *    either a valid, user-provided information type or a default information type if user did not provide one
+ *    either a valid, user-provided polSyn or a default polSyn if user did not provide one
  * @return
  *    returns a randomly-selected response
  */
@@ -43,7 +43,7 @@ module.exports = function(polSyn) {
   }
 
 
-  switch(random_response_num) {
+  switch (random_response_num) {
     case 1:
       return constants.GET_POLICY_INFO_RESPONSE;
     case 2:

@@ -40,7 +40,7 @@ function buildValidationResult(isValid, violatedSlot, messageContent) {
 /**
  * validates GetCopy intent
  */
-function validateChangeInformation(payType) {
+function validateCopy(payType) {
   console.log(`Validating ${constants.GET_COPY_INTENT} intent`);
 
     // payType slot not required; user did not specify information type
@@ -62,7 +62,7 @@ module.exports = function(intentRequest, callback) {
   var payType = intentRequest.currentIntent.slots.payType;
   console.log(`${constants.PAY_TYPE_VAL} ${payType}`);
 
-  const validationResult = validateChangeInformation(payType);
+  const validationResult = validateCopy(payType);
 
   // invalid result: prompt user for slot
   if(!validationResult.isValid) {
