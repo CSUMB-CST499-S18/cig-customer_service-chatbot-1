@@ -1,5 +1,5 @@
 /**
-  * Handles GetNoticeInfo intent's fulfillment
+  * Handles GetCopy intent's fulfillment
   * Author: Maria Loza
   * Date: 4/12/2018
   */
@@ -15,10 +15,10 @@ console.log(`${constants.CURRENT_FILE} ${__filename}\n
 
 
 /**
-  * builds object for fulfilling GetNoticeInfo intent
+  * builds object for fulfilling GetCopy intent
   */
 function buildFulfillmentResult(fulfillmentState, messageContent) {
-  console.log(`Building fulfillment result for ${constants.GET_NOTICE_INFO_INTENT} intent`);
+  console.log(`Building fulfillment result for ${constants.GET_COPY_INTENT} intent`);
 
   return {
     fulfillmentState,
@@ -32,12 +32,13 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
 
 
 /**
-  * fulfills GetNoticeInfo intent
+  * fulfills GetCopy intent
   */
-function fulfillChangeInfo() {
-  console.log(`Fulfilling ${constants.CHANGE_INFO_INTENT} intent`);
+function fulfillChangeInfo(payType) {
+  console.log(`Fulfilling ${constants.GET_COPY_INTENT} intent\n
+    payType: ${payType}`);
 
-  const bot_response = getBotResponse();
+  const bot_response = getBotResponse(payType);
   console.log(`bot response: ${bot_response}`);
 
   return buildFulfillmentResult(
@@ -47,11 +48,24 @@ function fulfillChangeInfo() {
 }
 
 /**
+ * @param payType
+ *    type of information that user wants to change
+ * @return
+ *    if payType is NULL (i.e., user did not provide one), return default info type
+ *    else, return payType
+ */
+function getValidInformationType(payType) {
+  if(!payType) return constants.DEFAULT_PAY_TYPE;
+  return payType;
+}
+
+/**
   * handleFulfillmentCodeHook(intentRequest)
   */
 module.exports = function(intentRequest, callback) {
 
-  var fulfillmentResult = fulfillChangeInfo();
+  var payType = getValidInformationType(intentRequest.currentIntent.slots.payType);
+  var fulfillmentResult = fulfillChangeInfo(payType);
 
   callback (lexResponses.close(
     intentRequest.sessionAttributes,

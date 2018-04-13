@@ -22,7 +22,7 @@ const greetCustomer = require('./Greeting_Intent/greetCustomer');
 const differentPayment = require('./DifferentPayment_Intent/differentPayment');
 // const getFeeInformation = require('./GetFeeInformation_Intent/getFeeInformation');
 const getNoticeInfo = require('./GetNoticeInfo_Intent/getNoticeInfo');
-// const getCopy = require('./GetCopy_Intent/getCopy');
+const getCopy = require('./GetCopy_Intent/getCopy');
 // const getPolicyInfo = require('./GetPolicyInfo_Intent/getPolicyInfo');
 // const makePayment = require('./MakePayment_Intent/makePayment');
 // const retrievePaymentInfo = require('./RetrievePaymentInfo_Intent/retrievePaymentInfo');
@@ -62,6 +62,12 @@ module.exports = function(intentRequest, callback) {
     if(intentName === constants.GET_NOTICE_INFO_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
         return getNoticeInfo(intentRequest, callback);
+    }
+    
+    // GetCopy intent
+    if(intentName === constants.GET_COPY_INTENT) {
+        console.log(`${constants.INTENT_TAG} ${intentName}`);
+        return getCopy(intentRequest, callback);
     }
 
     // unsupported intent

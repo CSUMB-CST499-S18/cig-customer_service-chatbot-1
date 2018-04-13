@@ -200,6 +200,17 @@ module.exports = {
       return(`We'd be glad to help you make changes to {0} your {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to get this started.`);
     },
     
+    // --------------------------------------------------
+    // DifferentPayment intend and GetCopy Intent
+    // --------------------------------------------------
+    //
+    //
+    PAY_TYPE_SLOT: "payType",
+    PAY_TYPE_VAL: "payType Value:",
+    PAYMENT_VALUE: "payment",
+    get DEFAULT_PAY_TYPE() {
+      return (`${this.PAY_TYPE_SLOT}`);
+    },
     
     
     // ------------------------------------
@@ -209,21 +220,11 @@ module.exports = {
     //
     DIFFERENT_PAYMENT_LAMBDA_DIR: "~/DifferentPayment_Intent",
     DIFFERENT_PAYMENT_INTENT: "DifferentPayment",
-    PAY_TYPE_SLOT: "payType",
-    PAY_TYPE_VAL: "payType Value:",
     VALUE_SLOT: "value",
     VALUE_VAL: "value Value:",
-    PAYMENT_VALUE: "payment",
-    get DEFAULT_PAY_TYPE() {
-      return (`${this.PAY_TYPE_SLOT}`);
-    },
     get SETUP_BOT_RESPONSE() {
         // replace {0} with PAYMENT_VALUE if user did not provide payType slot;
         return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss the change in {0}.`);
-    },
-    
-    get SETUP_BOT_RESPONSE() {
-        return (`You will have to contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} for further information.`);
     },
     get SETUP_BOT_RESPONSE2() {
         return (`You can contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
@@ -250,10 +251,6 @@ module.exports = {
     get SETUP_BOT_RESPONSE() {
         return (`I am unable to gather all the appropriate information. Contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
-    
-    get SETUP_BOT_RESPONSE() {
-        return (`Please, contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to discuss this ${this.NOTICE_VALUE}.`);
-    },
     get SETUP_BOT_RESPONSE2() {
         return (`You will need to contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
     },
@@ -265,6 +262,30 @@ module.exports = {
     },
     get SETUP_BOT_RESPONSE5() {
         return (`I cannot determine the reasoning behind the ${this.NOTICE_VALUE}, please, contact customer service at ${this.COMPANY_CLIENT_SERVICES_NUM}.`);
+    },
+    
+    // ------------------------------------
+    // GetCopy intent
+    // ------------------------------------
+    //ou can get a copy of your bill online through www.ciginsurance.com
+    //
+    GET_COPY_LAMBDA_DIR: "~/GetCopy_Intent",
+    GET_COPY_INTENT: "GetCopy",
+    PAYMENT_VALUE: "notice",
+    get SETUP_BOT_RESPONSE() {
+        return (`You can get a copy of your bill online through ${this.COMPANY_WEBSITE}.`);
+    },
+    get SETUP_BOT_RESPONSE2() {
+        return (`Please, visit our website at ${this.COMPANY_WEBSITE} to get a copy.`);
+    },
+    get SETUP_BOT_RESPONSE3() {
+        return (`I am unable to retrieve your copy, but you can visit ${this.COMPANY_WEBSITE} to view it.`);
+    },
+    get SETUP_BOT_RESPONSE4() {
+        return (`Unfortunately, I cannot find your copy. It can be found at ${this.COMPANY_WEBSITE}.`);
+    },
+    get SETUP_BOT_RESPONSE5() {
+        return (`Your copy is waiting for you at ${this.COMPANY_WEBSITE}.`);
     },
     
     
