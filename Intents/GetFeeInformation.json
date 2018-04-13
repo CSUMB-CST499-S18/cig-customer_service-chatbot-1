@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "GetFeeInformation",
+    "version": "7",
+    "fulfillmentActivity": {
+      "type": "CodeHook",
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:854206085631:function:CIG_Chatbot_Processor",
+        "messageVersion": "1.0"
+      }
+    },
+    "sampleUtterances": [
+      "Why do I have a fee",
+      "What is this fee",
+      "fee",
+      "Why fee"
+    ],
+    "slots": [
+      {
+        "name": "feeType",
+        "slotConstraint": "Required",
+        "slotType": "FeeType",
+        "slotTypeVersion": "2",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "How much is the fee?"
+            },
+            {
+              "contentType": "PlainText",
+              "content": "What is the fee amount?"
+            },
+            {
+              "contentType": "PlainText",
+              "content": "What kind of fee?"
+            }
+          ],
+          "maxAttempts": 2,
+          "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"Choose one to learn more\",\"title\":\"Fees\",\"buttons\":[{\"text\":\"NSF - $35.00\",\"value\":\"NSF\"},{\"text\":\"Installment Fee - $6.00\",\"value\":\"Installment\"},{\"text\":\"Late Fee - $20.00\",\"value\":\"Late\"},{\"text\":\"Reinstatement Fee - $15.00\",\"value\":\"Reinstatement\"}]}]}"
+        },
+        "priority": 1,
+        "sampleUtterances": []
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "Possible fee types",
+        "name": "FeeType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "NSF",
+            "synonyms": [
+              "nsf",
+              "non-sufficient funds"
+            ]
+          },
+          {
+            "value": "Installment"
+          },
+          {
+            "value": "Late"
+          },
+          {
+            "value": "Reinstatement"
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
