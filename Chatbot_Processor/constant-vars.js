@@ -297,6 +297,10 @@ module.exports = {
     GET_POLICY_INFO_LAMBDA_DIR: "~/GetPolicyInfo_Intent",
     GET_POLICY_INFO_INTENT: "GetPolicyInfo",
     POL_SYN_SLOT: "polSyn",
+    HOME_INSURANCE_VALUE: "HOC",
+    AUTO_INSURANCE_VALUE: "PAC",
+    HOME_VALUE: "home",
+    AUTOMOBILE_VALUE: "auto",
     get DEFAULT_POL_SYN_TYPE() {
       return (`${this.POL_SYN_SLOT}`);
     },
