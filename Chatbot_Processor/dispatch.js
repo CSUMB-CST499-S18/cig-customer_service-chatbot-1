@@ -70,7 +70,7 @@ module.exports = function(intentRequest, callback) {
         return getCopy(intentRequest, callback);
     }
     
-    // GetCopy intent
+    // GetPolicy intent
     if(intentName === constants.GET_POLICY_INFO_INTENT) {
         console.log(`${constants.INTENT_TAG} ${intentName}`);
         return getPolicyInfo(intentRequest, callback);

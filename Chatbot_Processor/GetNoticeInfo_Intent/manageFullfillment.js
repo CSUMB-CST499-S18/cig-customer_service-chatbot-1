@@ -33,7 +33,7 @@ function buildFulfillmentResult(fulfillmentState, messageContent) {
   * fulfills GetNoticeInfo intent
   */
 function fulfillChangeInfo() {
-  console.log(`Fulfilling ${constants.CHANGE_INFO_INTENT} intent`);
+  console.log(`Fulfilling ${constants.GET_NOTICE_INFO_INTENT} intent`);
 
   const bot_response = getBotResponse();
   console.log(`bot response: ${bot_response}`);

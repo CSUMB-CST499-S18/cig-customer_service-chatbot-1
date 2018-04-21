@@ -1,6 +1,6 @@
 'use strict';
 const constants = require('../constant-vars');
-const payload = require('../mock-payload.json');
+const payload = require('../mock-payload');
 const NUM_RESPONSES = constants.DEFAULT_NUM_BOT_RESPONSES;
 
 /**
@@ -19,7 +19,7 @@ module.exports = function(polSyn) {
   // checking which policies are available based of the policy names
   // HOC = home
   // PAC = auto
-  for (policy in payload.policies) {
+  for (var policy in payload.policies) {
     if (policy.indexOf(constants.HOME_INSURANCE_VALUE) > -1) {
       home = constants.HOME_VALUE;
     }
@@ -45,7 +45,7 @@ module.exports = function(polSyn) {
 
   switch (random_response_num) {
     case 1:
-      return constants.GET_POLICY_INFO_RESPONSE;
+      return constants.GET_POLICY_INFO_RESPONSE.replace('{0}', insurance);
     case 2:
       return constants.GET_POLICY_INFO_RESPONSE2.replace('{0}', insurance);
     case 3:
