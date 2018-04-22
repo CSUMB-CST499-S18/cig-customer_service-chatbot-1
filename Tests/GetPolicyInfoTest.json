@@ -1,0 +1,27 @@
+/**
+ * Tests the GetPolicyInfo Intent using slot, polSyn: policy
+ * Successful test will return a random bot response.
+ * Author: Maria Loza
+ * Date: 4/21/2018
+ *
+ */
+
+{
+  "messageVersion": "1.0",
+  "invocationSource": "FulfillmentCodeHook",
+  "userId": "user-1",
+  "sessionAttributes": {},
+  "bot": {
+    "name": "CIG_Chatbot",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "GetPolicyInfo",
+    "slots": {
+      "polSyn": "policy"
+    },
+    "confirmationStatus": "None"
+  }
+}

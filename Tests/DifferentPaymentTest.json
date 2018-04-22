@@ -1,0 +1,28 @@
+/**
+ * Tests the DifferentPayment Intent using slots, value and payType: up and payment
+ * Successful test will return a random bot response.
+ * Author: Maria Loza
+ * Date: 4/21/2018
+ *
+ */
+
+{
+  "messageVersion": "1.0",
+  "invocationSource": "FulfillmentCodeHook",
+  "userId": "user-1",
+  "sessionAttributes": {},
+  "bot": {
+    "name": "CIG_Chatbot",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "DifferentPayment",
+    "slots": {
+      "payType": "payment",
+      "value": "up"
+    },
+    "confirmationStatus": "None"
+  }
+}
