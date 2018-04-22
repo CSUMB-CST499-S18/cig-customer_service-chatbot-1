@@ -50,8 +50,8 @@ module.exports = {
      */
     BOT_NAME: "CIG_Chatbot",
     DEFAULT_NUM_BOT_RESPONSES: 5,
-
-
+    
+    
     // ------------------------------------
     // Greeting intent
     // ------------------------------------
@@ -70,12 +70,12 @@ module.exports = {
     get GREET_BOT_RESPONSE() {
       // replace {0} with GOOD_MORNING,etc. depending on time of day
       // replace {1} with BOT_INTRO if the user greeted the bot
-      return(`{0} {1} Please let me know what you need help with.`);
+      return(`{0} {1} Please let me know what you need help with today.`);
     },
     get GREET_BOT_RESPONSE2() {
       // replace {0} with GOOD_MORNING,etc. depending on time of day
       // replace {1} with BOT_INTRO if the user greeted the bot
-      return(`{0} {1} How may I be of assistance to you?`);
+      return(`{0} {1} How may I be of assistance?`);
     },
     get GREET_BOT_RESPONSE3() {
       // replace {0} with GOOD_MORNING,etc. depending on time of day
@@ -92,7 +92,7 @@ module.exports = {
       // replace {1} with BOT_INTRO if the user greeted the bot
       return(`{0} {1} Please let me know how I can help you today.`);
     },
-
+    
     // ------------------------------------
     // SetupProcess intent
     // ------------------------------------
@@ -199,6 +199,16 @@ module.exports = {
       // replace {1} with informationType provided by user or by default informationTypes if user did not provide
       return(`We'd be glad to help you make changes to {0} your {1}! Please contact our ${this.COMPANY_CLIENT_SERVICE_DEPT} at ${this.COMPANY_CLIENT_SERVICES_NUM} to get this started.`);
     },
+    
+    
+    // Retrieve Payment Info Intent
+  
+    // Make Payment Intent
+    
+    // Get Fee Information Intent
+    GET_FEE_INFORMATION_INTENT: "GetFeeInformation",
+    GET_FEE_INFORMATION_INTENT_LAMBDA_DIR: "~/GetFeeInformation_Intent",
+    
     
     // --------------------------------------------------
     // DifferentPayment intend and GetCopy Intent
@@ -319,6 +329,4 @@ module.exports = {
     get GET_POLICY_INFO_RESPONSE5() {
         return (`I pulled up your information and you have {0}.`);
     },
-    
-    
 };
