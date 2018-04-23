@@ -1,23 +1,14 @@
-// Function for getting payment amount and date
+'use strict'
+
 const constants = require('../constant-vars');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 
-module.exports = function paymentInfoIntent(intentRequest, callback) {
-    const sessionAttributes = intentRequest.sessionAttributes || {};
-    const slots = intentRequest.currentIntent.slots;
-    const infoType = slots.value;
+module.exports = function(intentRequest, callback) {
+    // source of lambda invokation
+    const source = intentRequest.invocationSource;
+    console.log(`Source of lambda invokation: ${source}`);
     
-    if (infoType === 'date') {
-        // return getBalance();
-        callback(close(sessionAttributes, 'Fulfilled', {
-            'contentType': 'PlainText',
-            'content': 'Youre due date is currently set for the 4th of every month by 4PM(PST/PDT)'
-        }));
-    } else {
-        // return getDueDate();
-        callback(close(sessionAttributes, 'Fulfilled', {
-            'contentType': 'PlainText',
-            'content': 'Youre minimum payment is 190.00USD'
-        }));
+    if(source === constants.FULFILL_CODE_HOOK) {
+        return handleFulfillmentCodeHook(intentRequest, callback);
     }
 }
