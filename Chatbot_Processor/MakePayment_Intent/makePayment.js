@@ -1,13 +1,11 @@
 const constants = require('../constant-vars');
 const handleFulfillmentCodeHook = require('./manageFulfillment');
 
-module.exports = function makePaymentIntent(intentRequest,callback) {
-    const sessionAttributes = intentRequest.sessionAttributes || {};
-    //const slots = intentRequest.currentIntent.slots;
-    //var bill = slots.Bill;
+module.exports = function(intentRequest,callback) {
+    const source = intentRequest.invocationSource;
+    console.log(`Source of lambda invokation: ${source}`);
     
-    callback(close(sessionAttributes, 'Fulfilled', {
-        'contentType': 'PlainText',
-        'content': 'You can pay your bill through ciginsurance.com, contacting your local agent, or contacting Client Services Billing Department at (877)200-4220'
-    }));
+    if(source === constants.FULFILL_CODE_HOOK) {
+        return handleFulfillmentCodeHook(intentRequest, callback);
+    }
 }
