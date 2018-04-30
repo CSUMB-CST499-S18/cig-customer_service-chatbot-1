@@ -1,0 +1,17 @@
+{
+  "messageVersion": "1.0",
+  "invocationSource": "FulfillmentCodeHook",
+  "sessionAttributes": null,
+  "bot": {
+    "name": "CIG_Chatbot",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "ChangeInformation",
+    "slots": { "informationType": "due date" },
+    "confirmationStatus": "Confirmed"
+  },
+  "inputTranscript": "yes"
+}
